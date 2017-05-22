@@ -13,6 +13,9 @@
 	- prix 				(float)
 	- format 			(String)
 ------------------
+### carteMere
+	- nbProcesseur	(int)
+	- nbMemoire	(int)
 	
 ### carteGraphique :
 	- frequence 	(Float)

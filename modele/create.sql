@@ -9,7 +9,6 @@ CREATE TABLE carteMere (
       disponibilite STRING,
       prix INTEGER,
       format STRING,
-
 --Dédier
 	nbProcesseur INTEGER,
 	nbMemoire  INTEGER
