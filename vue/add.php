@@ -32,7 +32,7 @@
           <br>
       </fieldset>
       <fieldset>
-        <legend>Description</legend>
+        <legend>Description :</legend>
         <textarea id="textdesc" name="description" rows="12"></textarea>
       </fieldset>
       <fieldset>
@@ -42,7 +42,7 @@
         <br>
       </fieldset>
       <fieldset id="dispo">
-        <legend>Disponibilité</legend>
+        <legend>Disponibilité :</legend>
         <input type="radio" name="OPT" value="oui" id="option1" checked >
         <label for="option1">oui</label>
         <input type="radio" name="OPT" value="non" id="option2" >
