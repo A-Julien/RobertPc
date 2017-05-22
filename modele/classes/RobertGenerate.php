@@ -1,13 +1,15 @@
 <?php
-		$phpStart = "<?php\n";
-		$phpEnd = "?>";
-		$droit = "public";
-		$include = "\trequire_once('Generique.class.php')";
+		
 
 		function($fileName,$className,$nbAttribut,$tabAttribut){
+			$phpStart = "<?php\n";
+			$phpEnd = "?>";
+			$droit = "public";
+			$include = "\trequire_once('Generique.class.php')";
 			$classHeader = "\tclass ".$className."extends Generique {\n";
 			$classFooter = "\t}\n";
 			$attributs = "";
+			
 			for ($i=0; $i < nbAttribut; $i++) { 
 				$attributs = $attributs."\t\t".$droit.$tabAttribut[i]."\n"
 			}
