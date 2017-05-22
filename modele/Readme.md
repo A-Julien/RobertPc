@@ -3,29 +3,29 @@
 
 ### Générique :
 	
-	- id 			 		(String)
-	- nom 			 		(String)
-	- modele 		 		(String)
-	- marque 		 		(String)
+	- id 			 	(String)
+	- nom 			 	(String)
+	- modele 		 	(String)
+	- marque 		 	(String)
 	- description 			(String)
-	- photo 		 		(int)
+	- photo 		 	(int)
 	- disponibilite			(bool)
-	- prix 					(float)
-	- format 				(String)
+	- prix 				(float)
+	- format 			(String)
 ------------------
 	
 ### carteGraphique :
-	- frequence (Float)
+	- frequence 	(Float)
 	- nbMemoire	(int)
 
 ### alimentation :
-	- puissance (int)
+	- puissance 	(int)
 
 ### processeur :
-	- frequence (float)
+	- frequence 	(float)
 	- nbCoeur 	(int)
 	
 
 ### memoire :
-	- frequence (float)
+	- frequence 	(float)
 	- capacite 	(int)
