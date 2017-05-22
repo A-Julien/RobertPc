@@ -63,7 +63,7 @@ CREATE TABLE processeur (
 	nbCoeur INTEGER
 );
 
-CREATE TABLE memoir (
+CREATE TABLE memoire (
 --GENERIQUE
       id INTEGER,
       nom STRING,
