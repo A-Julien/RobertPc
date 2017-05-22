@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  font-family: Arial,serif;
+  border: dotted 1px;
+  padding: 5px;
+  width: 55%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+header {
+  position: relative;
+  height: 112.8px;
+  margin-bottom: 10px;
+  font-variant: small-caps;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+legend{
+  font-variant: small-caps;
+  color: blue;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+header h1 {
+  position: absolute;
+  bottom: 0px;
+  font-size: 1.1em;
+  left: 210px;
+  margin-bottom: 0px;
+}
+
+header img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+fieldset {
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+p {
+  text-align: left;
+  padding-left: 2px;
+}
+
+textarea {
+  width: 100%;
+}
