@@ -18,15 +18,18 @@
     <div id="containerListeCat">
       <ul id="listeCat">
           <?php
-            require_once('../controleur/controleur.php');
-
-            $tabCat = getCat();
-            foreach ($tabCat as $key => $value) {
+          global $data;
+            foreach ($data as $key => $value) {
               echo '<li>
-                <form action="liste.php" method="post">
+                <form action="../controleur/controleur.php" method="post">
                   <p>
                     <input type="hidden" name="categorie" value="'.$key.'">
+<<<<<<< HEAD
+                    <input type="hidden" name="action" value="getListe">
+                    <input type="submit" value="'.$value.'">
+=======
                     <input class="bouton" type="submit" value="'.$value.'">
+>>>>>>> f8998323b1f96929a82abce6f6ffe7df45fcf6a3
                   </p>
                 </form>
               </li>';
@@ -70,6 +73,6 @@
           <p>RobertPC</p>
           <p>Tous droits réservés</p>
         </article>
-        
+
     </footer>
 </html>

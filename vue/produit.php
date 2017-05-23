@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<?php require_once('../controleur/controleur.php'); ?>
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="accueil.css"/>
@@ -21,18 +20,17 @@
     <div id="containerListeCat">
       <ul id="listeCat">
         <?php
-          require_once('../controleur/controleur.php');
-
-          $tabCat = getCat();
-          foreach ($tabCat as $key => $value) {
-            echo '<li>
-              <form action="liste.php" method="post">
-                <p>
-                  <input type="hidden" name="categorie" value="'.$key.'">
-                  <input type="submit" value="'.$value.'">
-                </p>
-              </form>
-            </li>';
+        global $data;
+        foreach ($data as $key => $value) {
+          echo '<li>
+            <form action="../controleur/controleur.php" method="post">
+              <p>
+                <input type="hidden" name="categorie" value="'.$key.'">
+                <input type="hidden" name="action" value="getListe">
+                <input type="submit" value="'.$value.'">
+              </p>
+            </form>
+          </li>';
           }
         ?>
       </ul>
@@ -41,12 +39,12 @@
     <div id="whiteBox">
       <ul>
         <?php
-          $id = htmlentities($_GET['id']);
-          $categorie = htmlentities($_GET['categorie']);
-          $produit = getObj($id, $categorie);
+          global $id;
+          global $categorie;
+          global $produit;
 
           printf("<article class=\"\">");
-          printf("<img src=\"\" alt=\"\" />");
+          printf("<img src=\"../modele/images/".$categorie."/".$produit->id.".png\" alt=\"photo produit\" />");
           printf("<h3>".$produit->marque." ".$produit->nom." ".$produit->modele."</h3>");
           printf("<p>".$produit->description."</p>");
           if ($produit->disponibilite == true) {
