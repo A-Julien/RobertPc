@@ -44,7 +44,7 @@
           $categorie = htmlentities($_POST['categorie']);
           $listeCat = getListe($categorie);
           for ($i=0; $i < sizeof($listeCat) ; $i++) {
-            printf("<li><a href=\"produit.php?id=".$listeCat[$i]->id."&categorie=".$categorie."\"><img src=\"\" alt=\"\" />");
+            printf("<li><a href=\"produit.php?id=".$listeCat[$i]->id."&categorie=".$categorie."\"><img src=\"../modele/images/".$categorie."/".$listeCat[$i]->id.".png\" alt=\"Salut\" width=\"250\" />");
             printf($listeCat[$i]->marque." ".$listeCat[$i]->nom." ".$listeCat[$i]->modele);
             printf("</a></li>");
           }
