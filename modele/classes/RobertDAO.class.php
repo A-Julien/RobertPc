@@ -26,15 +26,15 @@
 			$result=$res->fetchAll(PDO::FETCH_OBJ);
 			return $result;
 		}
-		
+
 		function getCategories(){
 			$req = "select name from sqlite_master where type='table'";
 			$res=$this->db->query($req);
-			$res->fetchAll(PDO::FETCH_ASSOC);
-			for ($i=0; $i < $res.sizeof() ; $i++) { 
-				$categorie[i]=$res[$i][1]
+			$tab = $res->fetchAll(PDO::FETCH_ASSOC);
+			for ($i=0; $i < sizeof($tab) ; $i++) {
+				$categorie[$i]=$tab[$i]["name"];
 			}
-			return $categorie
+			return $categorie;
 		}
 	}
 ?>
