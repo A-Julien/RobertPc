@@ -1,0 +1,98 @@
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	font-family: Arial, sans-serif;
+    font-size: 16px;
+	color: #4c4643;
+	height: 100%;
+}
+
+header {
+	background-color: rgb(90,94,107);
+	padding: 1%;
+	color: rgb(158,158,158);
+	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
+}
+header h1, #recherche{
+	display: inline-block;
+
+}
+#recherche{
+	float: right;
+}
+
+footer {
+	background-color: rgb(90,94,107);
+	padding: 1%;
+	color: rgb(158,158,158);
+	font-weight: bold;
+}
+footer p {
+	margin: 0.5px;
+	font-size: 15px;
+}
+#info, #mentions, #copyright {
+	display: inline-block;
+	vertical-align: bottom;
+}
+#info {
+	width: 32%;
+	text-align: left;
+}
+#mentions {
+	width: 32%;
+	color: rgb(64, 165, 181);
+	text-align: center;
+}
+#copyright {
+	width: 32%;
+	text-align: right;
+}
+
+#listeCat
+{
+	padding-left: 1px;
+	margin: 1px;
+	width: 100%;
+}
+#listeCat p {
+	margin: 0px;
+}
+.bouton {
+	padding: 6px 2px 6px 2px;
+	font-size: 13px;
+	font-weight: bold;
+	background-color: rgb(90,94,107);
+	color: rgb(64, 165, 181);
+	border-radius: 2px;
+	border: none;
+	border-right: solid rgb(158,158,158) 1px;
+	text-align: center;
+}
+
+#containerListeCat, #whiteBox {
+	vertical-align: top;
+}
+
+#containerListeCat {
+	background-color: rgb(90,94,107);
+	margin-top: 4px;
+	text-align: center;
+	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
+}
+
+#whiteBox {
+	width: 80%;
+	text-align: center;
+}
+
+ul,li{
+	list-style-type: none;
+}
+li {
+	display: inline-block;
+	width: 20%;
+}
