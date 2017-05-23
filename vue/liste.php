@@ -12,12 +12,29 @@
     </header>
 
     <nav id="recherche">
-      Coucou
+      <form id="recherche" method="post">
+        <input type="text" name="saisie" placeholder="Recherche par Mots-Clefs" required>
+        <input type="submit" value="">
+      </form>
     </nav>
 
     <div id="containerListeCat">
       <ul id="listeCat">
-        <?php  ?>
+        <?php
+          require_once('../controleur/controleur.php');
+
+          $tabCat = getCat();
+          foreach ($tabCat as $key => $value) {
+            echo '<li>
+              <form action="liste.php" method="post">
+                <p>
+                  <input type="hidden" name="categorie" value="'.$key.'">
+                  <input type="submit" value="'.$value.'">
+                </p>
+              </form>
+            </li>';
+          }
+        ?>
       </ul>
     </div>
 
@@ -36,7 +53,15 @@
     </div>
 
     <footer>
-      Coucou
+      <article id="info">
+        <p>Robert Blop</p>
+        <p>38000 Grenoble</p>
+      </article>
+      <p>Mentions légales</p>
+      <article>
+        <p>RobertPC</p>
+        <p>Tous droits réservés</p>
+      </article>
     </footer>
 
   </body>
