@@ -140,8 +140,8 @@
 				$attributs = $attributs.$tab.$tab.$tab.$droit."$".$key.";".$endl;
 				$__constructInitAt = $__constructInitAt.$tab.$tab.'$this->'.$key." = $".$key.";".$endl;
                 $__constructAtributs = $__constructAtributs."$".$key.",";
-                $getter = $getter.$tab.$endl.$droit."get".$this->upperFirstCase($key)."(){".$endl.$tab.$tab."return "
-                .'$this->'.$key.";".$endl;
+                $getter = $getter.$endl.$tab.$droit."get".$this->upperFirstCase($key)."(){".$endl.$tab.$tab."return "
+                .'$this->'.$key.";".$endl.$tab."}";
             }
 
 			$__constructAtributs = substr($__constructAtributs, 0, -1);
@@ -149,7 +149,7 @@
 
 
 
-			$classCode = $phpStart.$Comment.$include.$classHeader.$attributs.$__construct.$classFooter.$classFooter.$phpEnd;
+			$classCode = $phpStart.$Comment.$include.$classHeader.$attributs.$__construct.$classFooter.$getter.$endl.$classFooter.$phpEnd;
 			
 			return $classCode;
 		}

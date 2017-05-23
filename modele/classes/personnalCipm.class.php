@@ -12,5 +12,12 @@ c'est un fammeux trois mats
 		$this->frequence = $frequence;
 		$this->unTribu = $unTribu;
 	}
+
+	public getFrequence(){
+		return $this->frequence;
+	}
+	public getUnTribu(){
+		return $this->unTribu;
+	}
 	}
 ?>
