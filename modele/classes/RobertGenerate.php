@@ -11,7 +11,7 @@
 		$attributs = "";
 		$Comment = "/*".$endl.$com.$endl."*/".$endl;
 
-		$className = parseToConformSemantics($className);
+		$className = $this->parseToConformSemantics($className);
 		for ($i=0; $i < sizeof($tabAttribut); $i++) { 
 			$attributs = $attributs.$tab.$tab.$droit.$tabAttribut[$i].$endl;
 		}
@@ -34,18 +34,6 @@
 		}
 	}
 
-	function parseToConformSemantics($string){
-			$string = lcfirst($string);
-			$string = explode(" ", $string);
-			$className = "";
-			for ($i=0; $i < sizeof($string); $i++) { 
-				if($i != 0 && !ctype_upper($string[$i - 1]))
-					$string[$i] = ucfirst($string[$i]);
-				$className = $className.$string[$i];
-			}
-			//var_dump($className);
-		return $className;
-	}
 
 	//parseToConformSemantics($_GET['name']);
 	
