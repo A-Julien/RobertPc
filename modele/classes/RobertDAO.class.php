@@ -125,7 +125,7 @@
 				$__constructAtributs = $__constructAtributs."$".$key.",";
 			}
 			$__constructAtributs = substr($__constructAtributs, 0, -1);
-			$__construct = $tab.$__construct.$__constructAtributs.")".$endl.$tab.$__constructInitAt."{";
+			$__construct = $tab.$__construct.$__constructAtributs."){".$endl.$tab.$__constructInitAt;
 
 			$classCode = $phpStart.$Comment.$include.$classHeader.$attributs.$__construct.$classFooter.$classFooter.$phpEnd;
 			
