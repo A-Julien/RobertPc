@@ -32,19 +32,20 @@
 			$req = "select name from sqlite_master where type='table'";
 			$res=$this->db->query($req);
 			$tab = $res->fetchAll(PDO::FETCH_ASSOC);
-
-			for ($i=0; $i < sizeof($tab) ; $i++) {
-				//$categorie[$i]=$tab[$i]["name"];
-				$catName = $tab[$i]["name"]
-				$categorie[$catName] ;
-				$parseName = parse_str($catName);
-				var_dump($parseName);
-				/*
-				for ($j=0; $j < ; $j++) { 
-					# code...
-				}*/
+			foreach($tab as $key=>$value) {
+				$_key = $tab[$key]["name"];
+ 				$array_key[] =  $_key;
+ 				$array_value[] = $this->splitAtUpperCase($_key);
 			}
-			return $categorie;
+			return array_combine($array_key,$array_value);
+		}
+
+		function upperFirstCase($string){
+			return ucfirst($string);
+		}
+
+		function splitAtUpperCase($string){
+    		return $this->upperFirstCase(preg_replace('/([a-z0-9])?([A-Z])/','$1 $2',$string));
 		}
 	}
 ?>
