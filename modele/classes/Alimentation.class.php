@@ -5,10 +5,17 @@
 	class Alimentation extends Generique{
 		public $puissance;
 
-		public function __construct($puissance){
-        	$this->puissance = $puissance;
-        	parent::__construct($nom);
-    	}
-	}
+        /**
+         * Alimentation constructor.
+         * @param $puissance
+         */
+        public function __construct($puissance)
+        {
+            parent::__construct()
+            $this->puissance = $puissance;
+        }
+
+
+    }
 
 ?>
