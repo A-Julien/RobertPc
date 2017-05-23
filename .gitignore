@@ -5,7 +5,6 @@
 *.iml
 out
 gen
-.gitignore
 .idea/RobertPc.iml
 .idea/modules.xml
 .idea/workspace.xml
