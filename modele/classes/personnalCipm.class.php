@@ -7,7 +7,7 @@ c'est un fammeux trois mats
 	class personnalCipm extends Generique {
 			public $frequence;
 			public $unTribu;
-	public function __construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,$frequence,$unTribu)
+	public function __construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,$frequence,$unTribu){
 		parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format);
 		$this->frequence = $frequence;
 		$this->unTribu = $unTribu;
