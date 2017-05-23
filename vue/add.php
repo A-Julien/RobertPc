@@ -12,7 +12,7 @@
     <header>
       <h1><?php echo "Ajout d'un(e) $cat :"; ?></h1>
     </header>
-    <form action="../controleur/ajoutBD.php" method="get">
+    <form action="../controleur/ajoutBD.php" method="post">
       <fieldset>
         <legend>Infos Principales</legend>
           <label for="marque">Marque :</label>
@@ -27,9 +27,6 @@
           <label for="format">Format :</label>
           <input type="text" name="format" id ="format" required>
           <br>
-          <label for="pdv">Point de Vente :</label>
-          <input type="text" name="pointDeVente" id ="pdv" required>
-          <br>
       </fieldset>
       <fieldset>
         <legend>Description :</legend>
@@ -41,7 +38,7 @@
         <input type="text" name="tof" id ="photo" required>
         <br>
       </fieldset>
-      <fieldset id="dispo">
+      <fieldset id="disponibilite">
         <legend>Disponibilité :</legend>
         <input type="radio" name="OPT" value="oui" id="option1" checked >
         <label for="option1">oui</label>

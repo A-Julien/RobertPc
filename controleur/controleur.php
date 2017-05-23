@@ -3,23 +3,50 @@
 	//require_once('../modele/classes/RobertGenerate.php');
 
 	$robert = new RobertDAO('../modele/data');
+	$data;
+	$tabListe;
+	$categorie;
+	$id;
+	$produit;
+
+	if (isset($_POST['action'])) {
+		$action = $_POST['action'];
+	}
+	else {
+		$action="getCat";
+	}
+
+	$action();
 
 	function getCat() {
 		global $robert;
-		return $robert->getCategories();
-		//return $tabCat;
+		global $data;
+		$data = $robert->getCategories();
+		include("../vue/accueil.php");
 	}
 
-	function getListe($categorie) {
+	function getListe() {
+		global $categorie;
 		global $robert;
+		global $tabListe;
+		global $data;
+		$data = $robert->getCategories();
+		$categorie = $_POST['categorie'];
 		$tabListe = $robert->getListe($categorie);
-		return $tabListe;
+		include("../vue/liste.php");
 	}
 
-	function getObj($id, $categorie) {
+	function getObj() {
+		global $categorie;
 		global $robert;
+		global $data;
+		global $id;
+		global $produit;
+		$data = $robert->getCategories();
+		$categorie = $_POST['categorie'];
+		$id = $_POST['id'];
 		$produit = $robert->getObjet($id, $categorie);
-		return $produit;
+		include("../vue/produit.php");
 	}
 
 ?>
