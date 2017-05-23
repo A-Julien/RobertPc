@@ -9,9 +9,9 @@
          * Alimentation constructor.
          * @param $puissance
          */
-        public function __construct($puissance)
+        public function __construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,$puissance)
         {
-            parent::__construct()
+            parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format);
             $this->puissance = $puissance;
         }
 

@@ -22,6 +22,79 @@
 			$this->prix = $prix;
 			$this->format = $format;
 		}
+
+        /**
+         * @return mixed
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getNom()
+        {
+            return $this->nom;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getModele()
+        {
+            return $this->modele;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getMarque()
+        {
+            return $this->marque;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getDescription()
+        {
+            return $this->description;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getPhoto()
+        {
+            return $this->photo;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getDisponibilite()
+        {
+            return $this->disponibilite;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getPrix()
+        {
+            return $this->prix;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getFormat()
+        {
+            return $this->format;
+        }
+
 	}
 
 ?>

@@ -12,13 +12,33 @@
 			}
 		}
 
-		public function addObject($className){
+		public function sort(){
+
+        }
+
+		public function addObject($className,$tabAtribut){
+		    $Object = new $className();
+		    $serialize="";
+            for ($i=0; $i < sizeof($tabAtribut); $i++) {
+
+		        $serialize = $serialize.$tabAtribut[$i].',';
+            }
+            $serialize = substr($serialize, 0, -1);
+
+		    $Object->__construct($serialize);
+
 
 		}
 
+		/*
+		public function modifie($className,$id){
+
+        }
+		*/
+
 		public function deleteObject($id,$categorie){
 			$req = 'delete from '.$categorie.'where id = '.$id;
-			$res = $this->db->query($req); 
+			$this->db->query($req);
 		}
 
 		public function getObjet($id, $categorie) {
@@ -99,7 +119,8 @@
 		}
 		
 		private function HowRobertGenerateClassCode ($categorieName,$tabAttribut,$com){
-			$endl = "\n";
+            $categorieName = $this->parseToConformSemantics($categorieName);
+            $endl = "\n";
 			$tab = "\t";
 			$phpStart = "<?php".$endl;
 			$phpEnd = "?>";
@@ -111,21 +132,22 @@
 			$Comment = "/*".$endl.$com.$endl."*/".$endl;
 			$__constructAtributs = '$id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,';
 			$__constructInitAt = $tab.'parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format);'.$endl;
-			$categorieName = $this->parseToConformSemantics($categorieName);
+            $__construct = "public function __construct(";
+            $getter ="";
 
 			foreach ($tabAttribut as $key => $value) {
 				$key = $this->parseToConformSemantics($key);
 				$attributs = $attributs.$tab.$tab.$tab.$droit."$".$key.";".$endl;
 				$__constructInitAt = $__constructInitAt.$tab.$tab.'$this->'.$key." = $".$key.";".$endl;
-			}
+                $__constructAtributs = $__constructAtributs."$".$key.",";
+                $getter = $getter.$tab.$endl.$droit."get".$this->upperFirstCase($key)."(){".$endl.$tab.$tab."return "
+                .'$this->'.$key.";".$endl;
+            }
 
-			$__construct = "public function __construct(";
-			foreach ($tabAttribut as $key => $value){ 
-				$key = $this->parseToConformSemantics($key);
-				$__constructAtributs = $__constructAtributs."$".$key.",";
-			}
 			$__constructAtributs = substr($__constructAtributs, 0, -1);
 			$__construct = $tab.$__construct.$__constructAtributs."){".$endl.$tab.$__constructInitAt;
+
+
 
 			$classCode = $phpStart.$Comment.$include.$classHeader.$attributs.$__construct.$classFooter.$classFooter.$phpEnd;
 			
