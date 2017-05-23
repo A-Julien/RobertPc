@@ -60,7 +60,9 @@
 				unlink("../txt/".$categorieName);
 			$this->rmDir("../images/".$categorieName);
 		}
-
+		//************************************************************//
+		//						ADD CATEGORIES 						  //
+		//************************************************************//
 		public function addCategorie($categorieName,$tabAttribut,$com){
 			$categorieName = $this->parseToConformSemantics($categorieName);
 			$categorieName = $this->removeAccents($categorieName);
@@ -130,19 +132,6 @@
 			return $classCode;
 		}
 
-		private function parseToConformSemantics($string){
-			$string = lcfirst($string);
-			$string = explode(" ", $string);
-			$categorieName = "";
-			for ($i=0; $i < sizeof($string); $i++) { 
-				if($i != 0 && !ctype_upper($string[$i - 1]))
-					$string[$i] = ucfirst($string[$i]);
-				$categorieName = $categorieName.$string[$i];
-			}
-			//var_dump($categorieName);
-			return $categorieName;
-		}
-
 		private function rmDir($dir) {
    			if (is_dir($dir)) {
 	    		$allDir = scandir($dir);
@@ -160,6 +149,23 @@
 	    	 	rmdir($dir);
    			}
  		}
+		
+
+		//************************************************************//
+		//						SEMANTICS FUNCTIONS 				  //
+		//************************************************************//
+		private function parseToConformSemantics($string){
+			$string = lcfirst($string);
+			$string = explode(" ", $string);
+			$categorieName = "";
+			for ($i=0; $i < sizeof($string); $i++) { 
+				if($i != 0 && !ctype_upper($string[$i - 1]))
+					$string[$i] = ucfirst($string[$i]);
+				$categorieName = $categorieName.$string[$i];
+			}
+			//var_dump($categorieName);
+			return $this->removeAccents($categorieName);
+		}
 
  		private function removeAccents($str, $charset='utf-8'){
     		$str = htmlentities($str, ENT_NOQUOTES, $charset); //tarduction des caractéres et Ignore les guillemets doubles et les guillemets simples.
@@ -171,7 +177,6 @@
     
     		return $str;
 		}
-
 
 		private function upperFirstCase($string){
 			return ucfirst($string);

@@ -6,9 +6,9 @@
 		public $puissance;
 
 		public function __construct($puissance){
-        $this->puissance = $puissance;
-        parent::__construct($nom);
-    }
+        	$this->puissance = $puissance;
+        	parent::__construct($nom);
+    	}
 	}
 
 ?>
