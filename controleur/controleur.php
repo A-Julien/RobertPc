@@ -20,14 +20,9 @@
 
 	function getCat() {
 		global $robert;
-<<<<<<< HEAD
 		global $data;
 		$data = $robert->getCategories();
 		include("../vue/accueil.php");
-=======
-		$tabCat = $robert->getCategories();
-		return $tabCat;
->>>>>>> f8998323b1f96929a82abce6f6ffe7df45fcf6a3
 	}
 
 	function getListe() {
