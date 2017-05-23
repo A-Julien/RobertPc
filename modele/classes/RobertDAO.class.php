@@ -64,30 +64,35 @@
 		public function addCategorie($categorieName,$tabAttribut,$com){
 			$categorieName = $this->parseToConformSemantics($categorieName);
 			$categorieName = $this->removeAccents($categorieName);
-			$classFile = fopen($categorieName.".class.php", "w+");
+			$classFile = fopen("../modele/classes/".$categorieName.".class.php", "w+");
 			if($classFile==false)
 				die("Can not creat file");
-			fputs($classFile, HowRobertGenerateClassCode($categorieName,$tabAttribut,$com));
+			fputs($classFile, $this->HowRobertGenerateClassCode($categorieName,$tabAttribut,$com));
 			fclose($classFile);
 
-			$initFile = fopen("../txt/".$categorieName, "w+");
+			$initFile = fopen("../modele/txt/".$categorieName, "w+");
 			if($initFile==false)
-				die("Can not creat init file");
+				die("Can not creat einit file");
 			fclose($initFile);
 
-			if (!mkdir('../images/'.$categorieName, 0777, true)) {
+			if (!mkdir('../modele/images/'.$categorieName, 0777, true)) {
 	    		die('Echec lors de la création du répertoires...');
 			}
 
 			$this->creatTable($categorieName,$tabAttribut);
+			return 0;
 		}
 
 		private function creatTable($categorieName,$tabAttribut){
-			$startReq = 'CREATE TABLE';
+			$startReq = 'CREATE TABLE ';
 			$corpReq = "(";
-			foreach ($tabAttribut as $key => $value) 
-				$corpReq = $corpReq.$key." ".$value.","
+			foreach ($tabAttribut as $key => $value){
+				$key = $this->parseToConformSemantics($key);
+				$corpReq = $corpReq.$key." ".$value.",";
+			}
 			$corpReq = substr($corpReq, 0, -1);
+			$req = $startReq.$categorieName." ".$corpReq.")";
+			var_dump($req);
 			$this->db->query($startReq.$categorieName.$corpReq.")");
 		}
 		
@@ -102,22 +107,23 @@
 			$classFooter = $tab."}".$endl;
 			$attributs = "";
 			$Comment = "/*".$endl.$com.$endl."*/".$endl;
-			$__constructAtributs = "$id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,";
-			$__constructInitAt = "parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format)".$endl.$tab.$tab;
+			$__constructAtributs = '$id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,';
+			$__constructInitAt = $tab.'parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format);'.$endl;
 			$categorieName = $this->parseToConformSemantics($categorieName);
 
 			foreach ($tabAttribut as $key => $value) {
 				$key = $this->parseToConformSemantics($key);
-				$attributs = $attributs.$tab.$tab.$droit."$ "$key.$endl;
-				$__constructInitAt = $__constructInitAt.$tab.$tab.'$this->'.$key." = $".$key.$endl;
+				$attributs = $attributs.$tab.$tab.$tab.$droit."$".$key.";".$endl;
+				$__constructInitAt = $__constructInitAt.$tab.$tab.'$this->'.$key." = $".$key.";".$endl;
 			}
 
 			$__construct = "public function __construct(";
 			foreach ($tabAttribut as $key => $value) 
-				$__constructAtributs = $__constructAtributs."$".$key.","
-			
+				$key = $this->parseToConformSemantics($key);
+				$__constructAtributs = $__constructAtributs."$".$key.",";
+
 			$__constructAtributs = substr($__constructAtributs, 0, -1);
-			$__construct = $__construct.$__constructAtributs.")".$endl;
+			$__construct = $tab.$__construct.$__constructAtributs.")".$endl.$tab.$__constructInitAt;
 
 			$classCode = $phpStart.$Comment.$include.$classHeader.$attributs.$__construct.$classFooter.$phpEnd;
 			
