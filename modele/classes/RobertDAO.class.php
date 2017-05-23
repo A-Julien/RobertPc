@@ -19,15 +19,20 @@
 		public function addObject($className,$tabAtribut){
 		    $Object = new $className();
 		    $serialize="";
-            for ($i=0; $i < sizeof($tabAtribut); $i++) {
-
+            for ($i=0; $i < sizeof($tabAtribut); $i++)
 		        $serialize = $serialize.$tabAtribut[$i].',';
-            }
             $serialize = substr($serialize, 0, -1);
 
 		    $Object->__construct($serialize);
+            //Récupere le dernier id de la table et l'incrementer
+            $id = 2;
 
-
+            //construire requete bdd
+            for ($i=0; $i < sizeof($tabAtribut); $i++){
+               $getter = $this->parseToConformSemantics("get ".$tabAtribut[$i]);
+               $req = $Object->$getter;
+            }
+            $this->db->query($req);
 		}
 
 		/*
