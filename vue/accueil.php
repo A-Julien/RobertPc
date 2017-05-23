@@ -38,20 +38,23 @@
     <div id="whiteBox">
       <h3>Bienvenue sur RobertPC.net</h3>
       <article id="articleTop">
-       <img src="">
+       <img src="cartemere.png" alt="Carte Mère">
       </article>
-      <article class="article">
-        
-      </article>
-      <article class="article">
-        
-      </article>
-      <article class="article">
-        
-      </article>
-      <article class="article">
-        
-      </article>
+      <section id="reste">
+        <article class="article">
+          <img src="cartegraphique.png" alt="Carte Graphique">
+        </article>
+        <article class="article">
+          <img src="alimentaion.png" alt="Alimentation">
+        </article>
+        <article class="article">
+          <img src="memoire.png" alt="Memoire">
+        </article>
+        <article class="article">
+          <img src="./processeur.png" alt="Processeur">
+        </article>
+      </section>
+      
     </div>
 
     

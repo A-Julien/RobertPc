@@ -7,7 +7,7 @@ body {
 	font-family: Arial, sans-serif;
     font-size: 16px;
 	color: #4c4643;
-	height: 100%;
+	min-height: 100%;
 }
 
 header {
@@ -70,7 +70,6 @@ footer p {
 	border-radius: 2px;
 	border: none;
 	border-right: solid rgb(158,158,158) 1px;
-	text-align: center;
 }
 
 #containerListeCat, #whiteBox {
@@ -94,5 +93,26 @@ ul,li{
 }
 li {
 	display: inline-block;
+	text-align: center;
 	width: 20%;
+}
+
+#articleTop {
+	width: 70%;
+}
+#reste {
+	width: 29%;
+}
+#articleTop, #reste {
+	display: inline-block;
+}
+
+#articleTop img {
+	width: 70%;
+}
+#reste img {
+	width: 50%;
+}
+.article {
+	margin: 2px;
 }
