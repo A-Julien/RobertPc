@@ -6,8 +6,8 @@
 
 	function getCat() {
 		global $robert;
-		$tabCat = $robert->getCategories();
-		return $tabCat;
+		return $robert->getCategories();
+		//return $tabCat;
 	}
 
 	function getListe($categorie) {
