@@ -1,6 +1,6 @@
 <?php
 
-	class Generique {
+	abstract class Generique {
 		private $id;
 		private $nom;
 		private $modele;
