@@ -18,7 +18,7 @@
 			$result=$res->fetchAll(PDO::FETCH_OBJ);
 			return $result[0];
 		}
-
+		
 		function getListe($categorie)
 		{
 			$req='select * from '.$categorie;
@@ -27,10 +27,12 @@
 			return $result;
 		}
 
+		//retourne un tableau contenant les categories
 		function getCategories(){
 			$req = "select name from sqlite_master where type='table'";
 			$res=$this->db->query($req);
 			$tab = $res->fetchAll(PDO::FETCH_ASSOC);
+			
 			for ($i=0; $i < sizeof($tab) ; $i++) {
 				$categorie[$i]=$tab[$i]["name"];
 			}
