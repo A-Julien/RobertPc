@@ -5,7 +5,7 @@
 		function __construct($path){
 			$database = 'sqlite:'.$path.'/robertPc.db';
 			try{
-				$this->$db = new PDO($database);
+				$this->db = new PDO($database);
 			}
 			catch(PDOException $e){
 				die("erreur de connexion".$e->getMessage());
@@ -26,11 +26,15 @@
 			$result=$res->fetchAll(PDO::FETCH_OBJ);
 			return $result;
 		}
-
+		
 		function getCategories(){
 			$req = "select name from sqlite_master where type='table'";
 			$res=$this->db->query($req);
-			return  $res->fetchAll(PDO::FETCH_BOTH);
+			$res->fetchAll(PDO::FETCH_ASSOC);
+			for ($i=0; $i < $res.sizeof() ; $i++) { 
+				$categorie[i]=$res[$i][1]
+			}
+			return $categorie
 		}
 	}
 ?>
