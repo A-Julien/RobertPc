@@ -41,7 +41,7 @@
     <div id="whiteBox">
       <ul>
         <?php
-          $categorie = htmlentities($_GET['categorie']);
+          $categorie = htmlentities($_POST['categorie']);
           $listeCat = getListe($categorie);
           for ($i=0; $i < sizeof($listeCat) ; $i++) {
             printf("<li><a href=\"produit.php?id=".$listeCat[$i]->id."&categorie=".$categorie."\"><img src=\"\" alt=\"\" />");
