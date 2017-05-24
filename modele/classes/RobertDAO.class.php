@@ -25,13 +25,19 @@
 
 		    $Object->__construct($serialize);
             //Récupere le dernier id de la table et l'incrementer
-            $id = 2;
-
+            $req = 'SELECT '.$className.' FROM tatable ORDER BY id DESC LIMIT 0, 1';
+			$res = $this->db->query($req);
+			$resutlt = $res->fetch(PDO::FETCH_ROW)[0];
             //construire requete bdd
-            for ($i=0; $i < sizeof($tabAtribut); $i++){
+			$req = 'INSERT INTO '.$className."(";
+			$req = $req."'".$resutlt."'".",";
+
+            for ($i=0; $i < sizeof($tabAtribut)+1; $i++){
                $getter = $this->parseToConformSemantics("get ".$tabAtribut[$i]);
-               $req = $Object->$getter;
+               $req = $req."'".$Object->$getter."',";
             }
+            $req = substr($req, 0, -1);
+			$req = $req.")";
             $this->db->query($req);
 		}
 
@@ -77,7 +83,7 @@
 		public function deleteCategorie($categorieName){
 			$categorieName = $this->parseToConformSemantics($categorieName);
 			$req = 'DROP TABLE [ IF EXISTS ] '.$categorieName;
-			$res = $this->db->query($req);
+			$this->db->query($req);
 			if(!is_dir($categorieName))
 				unlink($categorieName.".class.php");
 
