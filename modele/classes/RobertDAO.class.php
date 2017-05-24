@@ -76,10 +76,13 @@ require_once('../modele/classes/generique.class.php');
 			$disponibilite = $Product->getDisponibilite();
 			$prix = $Product->getPrix();
 			$format = $Product->getFormat();
-			$req = 'insert into produits values (\''.$id.'\',\''.$nom.'\',\''.$modele.'\',\''.$marque.'\',\''.$description.'\',\''.$photo.'\'
-			,\''.$prix.'\',\''.$format.'\')';
+
+			$req = 'insert into produits values (\''.$id.'\',\''.$nom.'\',\''.$modele.'\',\''.$marque.'\',\''.$description.'\',\''.$photo.'\',\''.$disponibilite.'\',\''.$prix.'\',\''.$format.'\')';
+			var_dump('insert into produits values (\''.$id.'\',\''.$nom.'\',\''.$modele.'\',\''.$marque.'\',\''.$description.'\',\''.$photo.'\',\''.$disponibilite.'\',\''.$prix.'\',\''.$format.'\')');
 			$req2 = 'insert into appartient values (\''.$categorieName.'\',\''.$id.'\')';
-			$this->db->query($req);
+
+			$res = $this->db->query($req);
+			var_dump($res);
 			$this->db->query($req2);
 
 		}
@@ -302,7 +305,3 @@ require_once('../modele/classes/generique.class.php');
 	//}
 
 ?>
-
-
-<img src=\"../modele/images/".$categorie."/".$tdataSearch[$i]->id.".png\" alt=\"Error\" width=\"250\" height=\"200\" class=\"img\"/>
-file:///users/info/etu-as/lesnierl/public_html/RobertPc/modele/classes/RobertDAO.class.php
