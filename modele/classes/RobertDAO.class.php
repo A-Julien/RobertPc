@@ -14,15 +14,40 @@
 			}
 		}
 
-		public function sort(){
+		public function addProduct($className,$Product){
+			$className = $this->parseTConformSemantics($className);
 
-        }
+			$id = $Product->getId();
+			$nom = $Product->getNom();
+			$model = $Product->getModele();
+			$marque = $Product->getMarque();
+			$description =$Product->getDescription();
+			$photo = $Product->getPhoto();
+			$disponibilite = $Product->getDisponibilite
+			$prix = $Product->getPrix();
+			$format = $Product->getFormat();
 
-		public function addObject($className,$tabAtribut){
-			$className = $this->parseToConformSemantics($className);
 
-		    $Object = new $className();
+			//Incrementation de l'id
+			$reqid = "SELECT MAX(id) AS id FROM ".$className;
+			$resid = $this->db->query($reqid);
+			$resutlt = $res->fetch(PDO::FETCH_ASSOC)["id"];
+			$id = (int)$resutlt+1;
 
+			//requête d'ajout
+			$req = 'INSERT INTO '.$className."(";
+			$req = $req."'".$id."'".",";
+            //construire requete bdd
+            for ($i=0; $i < sizeof($tabAtribut); $i++) {
+
+            	$getter = $this->parseToConformSemantics("get ".$tabAtribut[$i]);
+               	$req = $req."'".$Object->$getter."',";
+            }
+
+            $req = substr($req, 0, -1);
+			$req = $req.")";
+            $this->db->query($req);
+			/*
 		    $serialize="";
 
 		//	var_dump($tabAtribut);
@@ -60,15 +85,11 @@
             $req = substr($req, 0, -1);
 			$req = $req.")";
             $this->db->query($req);
+            */
 		}
 
-		/*
-		public function modifie($className,$id){
 
-        }
-		*/
-
-		public function deleteObject($id,$categorie){
+		public function deleteProduct($id,$categorie){
 			$req = 'delete from '.$categorie.'where id = '.$id;
 			$this->db->query($req);
 		}
@@ -182,6 +203,8 @@
 			$__constructInitAt = $tab.'parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format);'.$endl;
             $__construct = "public function __construct(";
             $getter ="";
+            $gettAll = "public function getAll(){".$endl;
+            
             for ($i=0; $i < sizeof($tabAtribut) ; $i++) { 
 					$tabAtribut[$i] = $this->parseToConformSemantics($tabAtribut[$i]);
 					$attributs = $attributs.$tab.$tab.$tab.$droit."$".$tabAtribut[$i].";".$endl;
