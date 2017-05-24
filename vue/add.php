@@ -7,12 +7,12 @@
   </head>
   <body>
     <?php
-    $cat = htmlentities($_GET['categorie']);
+    global $categorie;
     ?>
     <header>
-      <h1><?php echo "Ajout d'un(e) $cat :"; ?></h1>
+      <h1><?php echo "Ajout d'un(e) $categorie :"; ?></h1>
     </header>
-    <form action="../controleur/ajoutBD.php" method="post">
+    <form action="../controleur/controleur.php" method="post">
       <fieldset>
         <legend>Infos Principales</legend>
           <label for="marque">Marque :</label>
@@ -47,7 +47,7 @@
       </fieldset>
       <?php
         printf("<fieldset>");
-        switch ($cat) {
+        switch ($categorie) {
           case "Carte Mere":
             printf("<label for=\"nbProc\">Nombre de Processeurs :</label>
                     <input type=\"text\" name=\"nombreProcesseurs\" id =\"nbProc\" required>
@@ -91,6 +91,7 @@
         printf("</fieldset>");
        ?>
        <p>
+         <input type="hidden" name="action" value="ajouterProduit">
          <input type="submit" id="confirmation" value="Valider">
        </p>
     </form>

@@ -51,6 +51,10 @@
 		include("../vue/produit.php");
 	}
 
+	function ajouterCat() {
+		include("../vue/ajoutCat.php");
+	}
+
 	function creerCat() {
 		global $tabCreaCat;
 		global $newCategorie;
@@ -62,6 +66,20 @@
 			}
 		}
 		include("../vue/ajoutCatConfirm.php");
+	}
+
+	function choixProduit() {
+		include("../vue/formulaireAdd.html");
+	}
+
+	function add() {
+		global $categorie;
+		$categorie = $_POST['categorie'];
+		include("../vue/add.php");
+	}
+
+	function ajouterProduit() {
+		
 	}
 
 ?>
