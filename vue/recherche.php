@@ -10,8 +10,8 @@
     <header>
       
     <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
-      <form id="recherche" action="../controleur/controleur.php" method="post">
-        <input type="hidden" name="action" value="getSearch">
+      <form id="recherche" action="/search" method="post">
+      	<input type="hidden" name="action" value="getSearch">
         <input id="barre" name="saisie" type="text" placeholder="Recherche par Mots-Clefs" required />
         <input id="loupe" type="submit" value="Go!" />
       </form>
@@ -20,7 +20,7 @@
     <div id="containerListeCat">
       <ul id="listeCat">
           <?php
-          global $data;
+          	global $data;
             foreach ($data as $key => $value) {
               echo '<li>
                 <form action="../controleur/controleur.php" method="post">
@@ -37,26 +37,15 @@
     </div>
 
     <div id="whiteBox">
-      <h3>Bienvenue sur RobertPC.net</h3>
-      <p>Découvrez nos produits : carte mère, alimentation... Un grand choix disponible !</p>
-      <article id="articleTop">
-       <img src="../vue/cartemere.png" alt="Carte Mère">
-      </article>
-      <section id="reste">
-        <article class="article">
-          <img src="../vue/cartegraphique.png" alt="Carte Graphique">
-        </article>
-        <article class="article">
-          <img src="../vue/alimentaion.png" alt="Alimentation">
-        </article>
-        <article class="article">
-          <img src="../vue/memoire.png" alt="Memoire">
-        </article>
-        <article class="article">
-          <img src="../vue/processeur.png" alt="Processeur">
-        </article>
-      </section>
-      
+    <ul>
+    	<?php
+    		global $dataSearch;
+    		foreach ($dataSearch as $key => $value) { 
+    			printf("<li class=\"article\">
+    				<div id=\"titre\">".$dataSearch[$i]->marque." ".$dataSearch[$i]->nom." ".$dataSearch[$i]->modele."</div>");
+    		}
+		?>
+	</ul>
     </div>
 
     

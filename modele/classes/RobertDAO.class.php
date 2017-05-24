@@ -220,3 +220,7 @@
 		}
 	}
 ?>
+
+
+<img src=\"../modele/images/".$categorie."/".$tdataSearch[$i]->id.".png\" alt=\"Error\" width=\"250\" height=\"200\" class=\"img\"/>
+file:///users/info/etu-as/lesnierl/public_html/RobertPc/modele/classes/RobertDAO.class.php

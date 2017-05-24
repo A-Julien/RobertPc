@@ -8,9 +8,8 @@
   <body>
     <header>
       <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
-      <form id="recherche" method="post">
-        <input name="saisie" type="text" placeholder="Mots-Clefs..." required />
-        <input class="loupe" type="submit" value="" />
+      <form id="recherche" action="/search" method="post">
+        <input id="barre" name="saisie" type="text" placeholder="Recherche par Mots-Clefs" required /><input id="loupe" type="submit" value="Go!" />
       </form>
     </header>
 

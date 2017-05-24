@@ -8,6 +8,8 @@
 	$categorie;
 	$id;
 	$produit;
+	$recherche;
+	$dataSearch;
 
 	if (isset($_POST['action'])) {
 		$action = $_POST['action'];
@@ -49,4 +51,12 @@
 		include("../vue/produit.php");
 	}
 
+	function getSearch() {
+		global $recherche;
+		global $dataSearch;
+		global $robert;
+		$recherche = $_POST['saisie'];
+		$dataSearch = $robert->getSearchDAO($recherche);
+		include("../vue/recherche.php");
+	}
 ?>
