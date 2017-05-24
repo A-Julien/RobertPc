@@ -2,23 +2,28 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Suppression d'un article</title>
+    <title>Formulaire Ajout Produit</title>
   </head>
   <body>
-    <?php require_once('../controleur/controleur.php'); ?>
-    <h1>Supprimer un produit :</h1>
-    <?php
-      $tabCat = getCat();
-      foreach ($tabCat as $key => $value) {
-        echo '<li>
-          <form action="formulaireSuppr.php" method="post">
-            <p>
-              <input type="hidden" name="categorie" value="'.$key.'">
-              <input type="submit" value="'.$value.'">
-            </p>
-          </form>
-        </li>';
-      }
-    ?>
+    <header>
+      <h1>Ajout d'un Produit :</h1>
+    </header>
+
+    <form action="../controleur/controleur.php" method="post">
+      <fieldset id="categorie">
+      <legend>Choisissez la catégorie du produit à supprimer :</legend>
+        <select name="categorie">
+          <option value="carteMere">Carte Mère</option>
+          <option value="carteGraphique">Carte Graphique</option>
+          <option value="alimentation">Alimentation</option>
+          <option value="processeur">Processeur</option>
+          <option value="memoire">Mémoire</option>
+        </select>
+    </fieldset>
+    <p>
+      <input type="hidden" name="action" value="suppr">
+      <input type="submit" id="confirmation" value="Valider">
+    </p>
+    </form>
   </body>
 </html>

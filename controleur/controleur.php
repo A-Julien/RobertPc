@@ -1,5 +1,6 @@
 <?php
 	require_once('../modele/classes/RobertDAO.class.php');
+	require_once('../modele/classes/Generique.class.php');
 	//require_once('../modele/classes/RobertGenerate.php');
 
 	$robert = new RobertDAO('../modele/data');
@@ -10,6 +11,7 @@
 	$produit;
 	$tabCreaCat;
 	$newCategorie;
+	$gen;
 
 	if (isset($_POST['action'])) {
 		$action = $_POST['action'];
@@ -72,14 +74,49 @@
 		include("../vue/formulaireAdd.html");
 	}
 
-	function add() { //ouvre le formulaire pour renseigner les valeurs des attributs du nouveau produit
+	function add() { //ouvre le formulaire "add.php" pour renseigner les valeurs des attributs du nouveau produit
 		global $categorie;
+		global $gen;
+		$gen = new Generique('','','','','','','','','');
 		$categorie = $_POST['categorie'];
 		include("../vue/add.php");
 	}
 
 	function ajouterProduit() { //effectue l'ajout dans la base de données
+		global $gen;
+		global $categorie;
+		$categorie = $_POST['categorie'];
+		$gen = new Generique('','','','','','','','','');
+		foreach ($gen as $attribute => $value) {
+			$gen->$attribute = $_POST[$attribute];
+		}
 
+		if(isset($_POST['nombreProcesseurs'])) {
+			$gen->nombreProcesseurs = $_POST['nombreProcesseurs'];
+			$gen->ram = $_POST['RAM'];
+		}
+		if(isset($_POST['frequence']) && isset($_POST['RAM'])) {
+			$gen->frequence = $_POST['frequence'];
+			$gen->ram = $_POST['RAM'];
+		}
+		if(isset($_POST['puissance'])) {
+			$gen->puissance = $_POST['puissance'];
+		}
+		if(isset($_POST['nombreCoeurs'])) {
+			$gen->frequence = $_POST['frequence'];
+			$gen->nombreCoeurs = $_POST['nombreCoeurs'];
+		}
+		if(isset($_POST['capacite'])) {
+			$gen->frequence = $_POST['frequence'];
+			$gen->capacite = $_POST['capacite'];
+		}
+
+		foreach ($gen as $key => $value) {
+			echo $key.":".$value."</br>";
+		}
+
+		//$gen->id = $_POST['id'];
+		//$gen->nom = $_POST
 	}
 
 	function supprimerProduit() { //ouvre le formulaire permettant de choisir le type de produit à ajouter
