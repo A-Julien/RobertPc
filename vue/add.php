@@ -70,7 +70,7 @@
        ?>
        <p>
          <?php
-            echo '<input type="hidden" name="categorie" value="'.$categorie'">';
+            echo '<input type="hidden" name="categorie" value="'.$categorie.'">';
           ?>
          <input type="hidden" name="action" value="ajouterProduit">
          <input type="submit" id="confirmation" value="Valider">

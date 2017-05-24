@@ -85,6 +85,7 @@
 	function ajouterProduit() { //effectue l'ajout dans la base de données
 		global $gen;
 		global $categorie;
+		global $robert;
 		$categorie = $_POST['categorie'];
 		$gen = new Generique('','','','','','','','','');
 		foreach ($gen as $attribute => $value) {
@@ -92,19 +93,19 @@
 		}
 
 		if(isset($_POST['nombreProcesseurs'])) {
-			$gen->nombreProcesseurs = $_POST['nombreProcesseurs'];
-			$gen->ram = $_POST['RAM'];
+			$gen->nbProcesseur = $_POST['nombreProcesseurs'];
+			$gen->nbMemoire = $_POST['RAM'];
 		}
 		if(isset($_POST['frequence']) && isset($_POST['RAM'])) {
 			$gen->frequence = $_POST['frequence'];
-			$gen->ram = $_POST['RAM'];
+			$gen->nbMemoire = $_POST['RAM'];
 		}
 		if(isset($_POST['puissance'])) {
 			$gen->puissance = $_POST['puissance'];
 		}
 		if(isset($_POST['nombreCoeurs'])) {
 			$gen->frequence = $_POST['frequence'];
-			$gen->nombreCoeurs = $_POST['nombreCoeurs'];
+			$gen->nbCoeur = $_POST['nombreCoeurs'];
 		}
 		if(isset($_POST['capacite'])) {
 			$gen->frequence = $_POST['frequence'];
@@ -115,8 +116,12 @@
 			echo $key.":".$value."</br>";
 		}
 
-		//$gen->id = $_POST['id'];
-		//$gen->nom = $_POST
+		echo $categorie;
+
+		$robert->ajouterProduit(); //a completer
+
+		include("../vue/ajoutPdtConfirm.php");
+
 	}
 
 	function supprimerProduit() { //ouvre le formulaire permettant de choisir le type de produit à ajouter
@@ -136,7 +141,12 @@
 	}
 
 	function supprObj() { //effectue la suppression de l'objet sélectionné dans la base de données
-
+		global $robert;
+		global $categorie;
+		global $id;
+		$categorie = $_POST['categorie'];
+		$id = $_POST['id'];
+		$objASuppr = $robert -> deleteObject($id, $categorie); //a completer
 	}
 
 ?>
