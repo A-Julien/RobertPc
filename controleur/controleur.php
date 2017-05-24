@@ -1,6 +1,6 @@
 <?php
 	require_once('../modele/classes/RobertDAO.class.php');
-	require_once('../modele/classes/Generique.class.php');
+	require_once('../modele/classes/generique.class.php');
 	//require_once('../modele/classes/RobertGenerate.php');
 
 	$robert = new RobertDAO('../modele/data');

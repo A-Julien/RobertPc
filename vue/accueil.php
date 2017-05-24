@@ -8,7 +8,7 @@
 
   <body>
     <header>
-      
+
     <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
       <form id="recherche" method="post">
         <input name="saisie" type="text" placeholder="Mots-Clefs..." required />
@@ -24,9 +24,9 @@
               echo '<li>
                 <form action="../controleur/controleur.php" method="post">
                   <p>
-                    <input type="hidden" name="categorie" value="'.$key.'">
+                    <input type="hidden" name="categorie" value="'.$value['nomMenu'].'">
                     <input type="hidden" name="action" value="getListe">
-                    <input class="bouton" type="submit" value="'.$value.'">
+                    <input class="bouton" type="submit" value="'.$value['nomMenu'].'">
                   </p>
                 </form>
               </li>';
@@ -55,10 +55,10 @@
           <img src="../vue/processeur.png" alt="Processeur">
         </article>
       </section>
-      
+
     </div>
 
-    
+
   </body>
 
   <footer>

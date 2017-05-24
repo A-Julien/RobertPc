@@ -22,9 +22,9 @@
               echo '<li>
                 <form action="../controleur/controleur.php" method="post">
                   <p>
-                    <input type="hidden" name="categorie" value="'.$key.'">
+                    <input type="hidden" name="categorie" value="'.$value['nomMenu'].'">
                     <input type="hidden" name="action" value="getListe">
-                    <input class="bouton" type="submit" value="'.$value.'">
+                    <input class="bouton" type="submit" value="'.$value['nomMenu'].'">
                   </p>
                 </form>
               </li>';
@@ -41,7 +41,7 @@
           global $produit;
 
           printf("<article id=\"article\">");
-          printf("<img src=\"../modele/images/".$categorie."/".$produit->id.".png\" alt=\"photo produit\" id=\"photo\"/>");
+          printf("<img src=\"../modele/images/".$produit->id.".png\" alt=\"photo produit\" id=\"photo\"/>");
           printf("<h3>".$produit->marque." ".$produit->nom." ".$produit->modele."</h3>");
           printf("<p>".$produit->description."</p>");
           if ($produit->disponibilite == true) {

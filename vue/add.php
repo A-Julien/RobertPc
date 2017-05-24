@@ -24,50 +24,7 @@
           echo '<br>';
         }
 
-        printf("<fieldset>");
-        switch ($categorie) {
-          case "Carte Mere":
-            printf("<label for=\"nbProc\">Nombre de Processeurs :</label>
-                    <input type=\"text\" name=\"nombreProcesseurs\" id =\"nbProc\" required>
-                    <br>
-                    <label for=\"ram\">RAM :</label>
-                    <input type=\"text\" name=\"RAM\" id =\"ram\" required>
-                    <br>");
-            break;
-          case "Carte Graphique":
-            printf("<label for=\"freq\">Fréquence :</label>
-                    <input type=\"text\" name=\"frequence\" id =\"freq\" required>
-                    <br>
-                    <label for=\"ram\">RAM :</label>
-                    <input type=\"text\" name=\"RAM\" id =\"ram\" required>
-                    <br>");
-            break;
-          case "Alimentation":
-            printf("<label for=\"pow\">Puissance :</label>
-                  <input type=\"text\" name=\"puissance\" id =\"pow\" required>
-                  <br>");
-            break;
-
-          case "Processeur":
-            printf("<label for=\"freq\">Fréquence :</label>
-                    <input type=\"text\" name=\"frequence\" id =\"freq\" required>
-                    <br>
-                    <label for=\"nbCoeurs\">Nombre de Coeurs :</label>
-                    <input type=\"text\" name=\"nombreCoeurs\" id =\"nbCoeurs\" required>
-                    <br>");
-            break;
-
-          default:
-            printf("<label for=\"freq\">Fréquence :</label>
-                    <input type=\"text\" name=\"frequence\" id =\"freq\" required>
-                    <br>
-                    <label for=\"capa\">Capacité :</label>
-                    <input type=\"text\" name=\"capacite\" id =\"capa\" required>
-                    <br>");
-            break;
-        }
-        printf("</fieldset>");
-       ?>
+        ?>
        <p>
          <?php
             echo '<input type="hidden" name="categorie" value="'.$categorie.'">';

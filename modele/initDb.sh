@@ -1,15 +1,12 @@
 #!/bin/sh
+rm data/robertPc.db
 sqlite3 data/robertPc.db <<EOF
 .read create.sql
 .separator |
-.import txt/carteMere carteMere
+.import txt/produits produits
 .separator |
-.import txt/carteGraphique carteGraphique
+.import txt/categories categories
 .separator |
-.import txt/alimentation alimentation
-.separator |
-.import txt/processeur processeur
-.separator |
-.import txt/memoire memoire
+.import txt/appartient appartient
 .quit
 EOF

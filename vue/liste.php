@@ -22,9 +22,9 @@
               echo '<li>
                 <form action="../controleur/controleur.php" method="post">
                   <p>
-                    <input type="hidden" name="categorie" value="'.$key.'">
+                    <input type="hidden" name="categorie" value="'.$value['nomMenu'].'">
                     <input type="hidden" name="action" value="getListe">
-                    <input class="bouton" type="submit" value="'.$value.'">
+                    <input class="bouton" type="submit" value="'.$value['nomMenu'].'">
                   </p>
                 </form>
               </li>';
@@ -40,7 +40,7 @@
           global $tabListe;
           global $categorie;
           for ($i=0; $i < sizeof($tabListe) ; $i++) {
-            printf("<li class=\"article\"><form action=\"../controleur/controleur.php\" method=\"post\"><img src=\"../modele/images/".$categorie."/".$tabListe[$i]->id.".png\" alt=\"Salut\" width=\"250\" height=\"200\" />");
+            printf("<li class=\"article\"><form action=\"../controleur/controleur.php\" method=\"post\"><img src=\"../modele/images/".$tabListe[$i]->id.".png\" alt=\"Salut\" width=\"250\" height=\"200\" />");
             printf("<input type=\"hidden\" name=\"action\" value=\"getObj\">");
             printf("<input type=\"hidden\" name=\"id\" value=".$tabListe[$i]->id.">");
             printf("<input type=\"hidden\" name=\"categorie\" value=".$categorie.">");
