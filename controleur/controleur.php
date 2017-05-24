@@ -8,6 +8,8 @@
 	$categorie;
 	$id;
 	$produit;
+	$tabCreaCat;
+	$newCategorie;
 
 	if (isset($_POST['action'])) {
 		$action = $_POST['action'];
@@ -47,6 +49,17 @@
 		$id = $_POST['id'];
 		$produit = $robert->getObjet($id, $categorie);
 		include("../vue/produit.php");
+	}
+
+	function creerCat() {
+		global $tabCreaCat;
+		global $newCategorie;
+		$newCategorie = $_POST['cat'];
+		$tabCreaCat = array();
+		for ($i=1; isset($_POST['nomAttr'.$i]) ; $i++) {
+			$tabCreaCat[$_POST['nomAttr'.$i]] = $_POST['typeAttr'.$i];
+		}
+		include("../vue/ajoutCatConfirm.php");
 	}
 
 ?>
