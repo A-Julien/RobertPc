@@ -58,7 +58,6 @@ footer p {
 /* Réglages du menu, contenant les titres des catégories */
 #listeCat
 {
-	padding-left: 1px;
 	margin: 1px;
 	width: 100%;
 }
@@ -73,7 +72,6 @@ footer p {
 	color: rgb(64, 165, 181);
 	border-radius: 2px;
 	border: none;
-	border-right: solid rgb(158,158,158) 1px;
 }
 
 ul,li{
@@ -83,6 +81,7 @@ li {
 	display: inline-block;
 	text-align: center;
 	width: 20%;
+	border: solid rgb(158,158,158) 1px;
 }
 
 #containerListeCat {
