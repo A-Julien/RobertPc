@@ -57,7 +57,9 @@
 		$newCategorie = $_POST['cat'];
 		$tabCreaCat = array();
 		for ($i=1; isset($_POST['nomAttr'.$i]) ; $i++) {
-			$tabCreaCat[$_POST['nomAttr'.$i]] = $_POST['typeAttr'.$i];
+			if(isset($_POST['nomAttr'.$i])){
+				$tabCreaCat[$_POST['nomAttr'.$i]] = $_POST['typeAttr'.$i];
+			}
 		}
 		include("../vue/ajoutCatConfirm.php");
 	}
