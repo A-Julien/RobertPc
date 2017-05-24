@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="accueil.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../vue/accueil.css"/>
     <title>Accueil RobertPC</title>
   </head>
 
   <body>
     <header>
-      <h1>Robert PC.net</h1>
+      
+    <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
       <form id="recherche" method="post">
         <input name="saisie" type="text" placeholder="Mots-Clefs..." required />
         <input class="loupe" type="submit" value="" />
@@ -24,12 +25,8 @@
                 <form action="../controleur/controleur.php" method="post">
                   <p>
                     <input type="hidden" name="categorie" value="'.$key.'">
-<<<<<<< HEAD
                     <input type="hidden" name="action" value="getListe">
-                    <input type="submit" value="'.$value.'">
-=======
                     <input class="bouton" type="submit" value="'.$value.'">
->>>>>>> f8998323b1f96929a82abce6f6ffe7df45fcf6a3
                   </p>
                 </form>
               </li>';
@@ -40,21 +37,22 @@
 
     <div id="whiteBox">
       <h3>Bienvenue sur RobertPC.net</h3>
+      <p>Découvrez nos produits : carte mère, alimentation... Un grand choix disponible !</p>
       <article id="articleTop">
-       <img src="cartemere.png" alt="Carte Mère">
+       <img src="../vue/cartemere.png" alt="Carte Mère">
       </article>
       <section id="reste">
         <article class="article">
-          <img src="cartegraphique.png" alt="Carte Graphique">
+          <img src="../vue/cartegraphique.png" alt="Carte Graphique">
         </article>
         <article class="article">
-          <img src="alimentaion.png" alt="Alimentation">
+          <img src="../vue/alimentaion.png" alt="Alimentation">
         </article>
         <article class="article">
-          <img src="memoire.png" alt="Memoire">
+          <img src="../vue/memoire.png" alt="Memoire">
         </article>
         <article class="article">
-          <img src="./processeur.png" alt="Processeur">
+          <img src="../vue/processeur.png" alt="Processeur">
         </article>
       </section>
       

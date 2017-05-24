@@ -31,7 +31,6 @@ header a:visited {
 header a:hover {
 	color: rgb(121,128,129);
 }
-
 #recherche{
 	float: right;
 }
@@ -108,22 +107,14 @@ li {
 	min-height: 100vh;
 }
 
-#articleTop {
-	width: 70%;
-}
-#reste {
-	width: 29%;
-}
-#articleTop, #reste {
-	display: inline-block;
+#article {
+	width: 50%;
+	margin: auto;
+	border-right: 1px solid rgb(90,94,107);
+	border-bottom: 1px solid rgb(90,94,107);
+	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
 }
 
-#articleTop img {
-	width: 70%;
-}
-#reste img {
-	width: 50%;
-}
-.article {
-	margin: 2px;
+#photo {
+	width: 80%;
 }

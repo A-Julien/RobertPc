@@ -7,47 +7,25 @@
   </head>
   <body>
     <?php
-    $cat = htmlentities($_GET['categorie']);
+    global $categorie;
     ?>
     <header>
-      <h1><?php echo "Ajout d'un(e) $cat :"; ?></h1>
+      <h1><?php echo "Ajout d'un(e) $categorie :"; ?></h1>
     </header>
-    <form action="../controleur/ajoutBD.php" method="post">
+    <?php
+      global $gen;
+    ?>
+    <form action="../controleur/controleur.php" method="post">
       <fieldset>
-        <legend>Infos Principales</legend>
-          <label for="marque">Marque :</label>
-          <input type="text" name="brand" id ="marque" required>
-          <br>
-          <label for="modele">Modèle :</label>
-          <input type="text" name="model" id ="modele" required>
-          <br>
-          <label for="prix">Prix :</label>
-          <input type="text" name="price" id ="prix" required>
-          <br>
-          <label for="format">Format :</label>
-          <input type="text" name="format" id ="format" required>
-          <br>
-      </fieldset>
-      <fieldset>
-        <legend>Description :</legend>
-        <textarea id="textdesc" name="description" rows="12"></textarea>
-      </fieldset>
-      <fieldset>
-        <legend>Photo :</legend>
-        <label for="photo">Nom photo :</label>
-        <input type="text" name="tof" id ="photo" required>
-        <br>
-      </fieldset>
-      <fieldset id="disponibilite">
-        <legend>Disponibilité :</legend>
-        <input type="radio" name="OPT" value="oui" id="option1" checked >
-        <label for="option1">oui</label>
-        <input type="radio" name="OPT" value="non" id="option2" >
-        <label for="option2">non</label>
-      </fieldset>
       <?php
+        foreach ($gen as $attribute => $value) {
+          echo '<label for='.$attribute.'>'.$attribute.' :</label>';
+          echo '<input type="text" name="'.$attribute.'" id ="'.$attribute.'" required>';
+          echo '<br>';
+        }
+
         printf("<fieldset>");
-        switch ($cat) {
+        switch ($categorie) {
           case "Carte Mere":
             printf("<label for=\"nbProc\">Nombre de Processeurs :</label>
                     <input type=\"text\" name=\"nombreProcesseurs\" id =\"nbProc\" required>
@@ -91,6 +69,10 @@
         printf("</fieldset>");
        ?>
        <p>
+         <?php
+            echo '<input type="hidden" name="categorie" value="'.$categorie.'">';
+          ?>
+         <input type="hidden" name="action" value="ajouterProduit">
          <input type="submit" id="confirmation" value="Valider">
        </p>
     </form>
