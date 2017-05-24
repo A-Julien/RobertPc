@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.idea/RobertPc.iml
+.idea/modules.xml
+.idea/workspace.xml
+._.DS_Store
