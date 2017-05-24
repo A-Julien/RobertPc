@@ -22,6 +22,15 @@ header h1, #recherche{
 	display: inline-block;
 
 }
+header a:link {
+	color: rgb(158,158,158);
+}
+header a:visited {
+	color: rgb(158,158,158);	
+}
+header a:hover {
+	color: rgb(121,128,129);
+}
 #recherche{
 	float: right;
 }

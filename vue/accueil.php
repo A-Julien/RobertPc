@@ -8,7 +8,8 @@
 
   <body>
     <header>
-      <h1>Robert PC.net</h1>
+      
+    <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
       <form id="recherche" method="post">
         <input name="saisie" type="text" placeholder="Mots-Clefs..." required />
         <input class="loupe" type="submit" value="" />
@@ -36,6 +37,7 @@
 
     <div id="whiteBox">
       <h3>Bienvenue sur RobertPC.net</h3>
+      <p>Découvrez nos produits : carte mère, alimentation... Un grand choix disponible !</p>
       <article id="articleTop">
        <img src="../vue/cartemere.png" alt="Carte Mère">
       </article>
