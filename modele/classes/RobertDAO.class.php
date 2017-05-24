@@ -1,4 +1,6 @@
 <?php
+	include '../modele/classes/include.php';
+
 	class RobertDAO{
 		private $db;
 
@@ -12,42 +14,82 @@
 			}
 		}
 
-		public function sort(){
+		public function addProduct($className,$Product){
+			$className = $this->parseTConformSemantics($className);
 
-        }
+			$id = $Product->getId();
+			$nom = $Product->getNom();
+			$model = $Product->getModele();
+			$marque = $Product->getMarque();
+			$description =$Product->getDescription();
+			$photo = $Product->getPhoto();
+			$disponibilite = $Product->getDisponibilite
+			$prix = $Product->getPrix();
+			$format = $Product->getFormat();
 
-		public function addObject($className,$tabAtribut){
-		    $Object = new $className();
-		    $serialize="";
-            for ($i=0; $i < sizeof($tabAtribut); $i++)
-		        $serialize = $serialize.$tabAtribut[$i].',';
-            $serialize = substr($serialize, 0, -1);
 
-		    $Object->__construct($serialize);
-            //Récupere le dernier id de la table et l'incrementer
-            $req = 'SELECT '.$className.' FROM tatable ORDER BY id DESC LIMIT 0, 1';
-			$res = $this->db->query($req);
-			$resutlt = $res->fetch(PDO::FETCH_ROW)[0];
-            //construire requete bdd
+			//Incrementation de l'id
+			$reqid = "SELECT MAX(id) AS id FROM ".$className;
+			$resid = $this->db->query($reqid);
+			$resutlt = $res->fetch(PDO::FETCH_ASSOC)["id"];
+			$id = (int)$resutlt+1;
+
+			//requête d'ajout
 			$req = 'INSERT INTO '.$className."(";
-			$req = $req."'".$resutlt."'".",";
+			$req = $req."'".$id."'".",";
+            //construire requete bdd
+            for ($i=0; $i < sizeof($tabAtribut); $i++) {
 
-            for ($i=0; $i < sizeof($tabAtribut)+1; $i++){
-               $getter = $this->parseToConformSemantics("get ".$tabAtribut[$i]);
-               $req = $req."'".$Object->$getter."',";
+            	$getter = $this->parseToConformSemantics("get ".$tabAtribut[$i]);
+               	$req = $req."'".$Object->$getter."',";
             }
+
             $req = substr($req, 0, -1);
 			$req = $req.")";
             $this->db->query($req);
+			/*
+		    $serialize="";
+
+		//	var_dump($tabAtribut);
+            for ($i=0; $i < sizeof($tabAtribut); $i++){
+		        $serialize = $serialize."'".$tabAtribut[$i]."'".',';
+            }
+
+            $serialize = substr($serialize, 0, -1);
+
+            var_dump($serialize);
+		    
+		    eval('$Object->__construct('. $serialize.')');
+		    //$Object->__construct(eval($serialize));
+		   
+		    var_dump($Object);
+
+            //Récupere le dernier id de la table et l'incrementer
+            //$req = 'SELECT * FROM '.$className.' ORDER BY id RAND() LIMIT 0 1';
+
+			$reqid = "SELECT MAX(id) AS id FROM ".$className;
+			$resid = $this->db->query($reqid);
+			$resutlt = $res->fetch(PDO::FETCH_ASSOC)["id"];
+			$id = (int)$resutlt+1;
+
+			$req = 'INSERT INTO '.$className."(";
+			$req = $req."'".$id."'".",";
+            //construire requete bdd
+            for ($i=0; $i < sizeof($tabAtribut); $i++) {
+
+            	$getter = $this->parseToConformSemantics("get ".$tabAtribut[$i]);
+               	var_dump($getter);
+               	$req = $req."'".$Object->$getter."',";
+            }
+			
+            $req = substr($req, 0, -1);
+			$req = $req.")";
+            $this->db->query($req);
+            */
 		}
 
-		/*
-		public function modifie($className,$id){
 
-        }
-		*/
-
-		public function deleteObject($id,$categorie){
+		public function deleteProduct($id,$categorie){
 			$req = 'delete from '.$categorie.'where id = '.$id;
 			$this->db->query($req);
 		}
@@ -102,31 +144,47 @@
 				die("Can not creat file");
 			fputs($classFile, $this->HowRobertGenerateClassCode($categorieName,$tabAttribut,$com));
 			fclose($classFile);
-
+			//********* Add Init File********//
 			$initFile = fopen("../modele/txt/".$categorieName, "w+");
 			if($initFile==false)
 				die("Can not creat einit file");
 			fclose($initFile);
 
+			//********* Inculde generation********//
+			$includeFile = fopen("../modele/classes/include.php", "r+");
+			if($includeFile==false)
+				die("Can not creat einit file");
+			fseek($includeFile,-2,SEEK_END);
+			fputs($includeFile, $this->addIncludeToDAO($categorieName));
+			fclose($includeFile);
+			//********* Image Folder********//
 			if (!mkdir('../modele/images/'.$categorieName, 0777, true)) {
 	    		die('Echec lors de la création du répertoires...');
 			}
-
+			//********* Add Table ********//
 			$this->creatTable($categorieName,$tabAttribut);
 			return 0;
+
 		}
 
 		private function creatTable($categorieName,$tabAttribut){
 			$startReq = 'CREATE TABLE ';
 			$corpReq = "(";
-			foreach ($tabAttribut as $key => $value){
-				$key = $this->parseToConformSemantics($key);
-				$corpReq = $corpReq.$key." ".$value.",";
+			for ($i=0; $i < sizeof($tabAtribut) ; $i++) { 
+				$tabAtribut[$i] = $this->parseToConformSemantics($tabAtribut[$i]);
+				$corpReq = $corpReq.$tabAtribut[$i]." STRING, ";
 			}
 			$corpReq = substr($corpReq, 0, -1);
 			$req = $startReq.$categorieName." ".$corpReq.")";
 			var_dump($req);
 			$this->db->query($startReq.$categorieName.$corpReq.")");
+		}
+
+		private function addIncludeToDAO($categorieName){
+			$endl = "\n";
+			$tab = "\t";
+			$include = $tab."include '".$categorieName.".class.php';".$endl."?>";
+			return $include;
 		}
 		
 		private function HowRobertGenerateClassCode ($categorieName,$tabAttribut,$com){
@@ -136,7 +194,7 @@
 			$phpStart = "<?php".$endl;
 			$phpEnd = "?>";
 			$droit = "public ";
-			$include = $tab."require_once('Generique.class.php');".$endl.$endl;
+			$include = $tab."require_once('../modele/classes/generique.class.php');".$endl.$endl;
 			$classHeader = $tab."class ".$categorieName." extends Generique {".$endl;
 			$classFooter = $tab."}".$endl;
 			$attributs = "";
@@ -145,16 +203,17 @@
 			$__constructInitAt = $tab.'parent::__construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format);'.$endl;
             $__construct = "public function __construct(";
             $getter ="";
-
-			foreach ($tabAttribut as $key => $value) {
-				$key = $this->parseToConformSemantics($key);
-				$attributs = $attributs.$tab.$tab.$tab.$droit."$".$key.";".$endl;
-				$__constructInitAt = $__constructInitAt.$tab.$tab.'$this->'.$key." = $".$key.";".$endl;
-                $__constructAtributs = $__constructAtributs."$".$key.",";
-                $getter = $getter.$endl.$tab.$droit."get".$this->upperFirstCase($key)."(){".$endl.$tab.$tab."return "
-                .'$this->'.$key.";".$endl.$tab."}";
+            $gettAll = "public function getAll(){".$endl;
+            
+            for ($i=0; $i < sizeof($tabAtribut) ; $i++) { 
+					$tabAtribut[$i] = $this->parseToConformSemantics($tabAtribut[$i]);
+					$attributs = $attributs.$tab.$tab.$tab.$droit."$".$tabAtribut[$i].";".$endl;
+					$__constructInitAt = $__constructInitAt.$tab.$tab.'$this->'.$tabAtribut[$i]." = $".$tabAtribut[$i].";".$endl;
+	                $__constructAtributs = $__constructAtributs."$".$tabAtribut[$i].",";
+	                $getter = $getter.$endl.$tab.$droit."function "."get".$this->upperFirstCase($tabAtribut[$i])."(){".$endl.$tab.$tab."return "
+	                .'$this->'.$tabAtribut[$i].";".$endl.$tab."}";
+	            }
             }
-
 			$__constructAtributs = substr($__constructAtributs, 0, -1);
 			$__construct = $tab.$__construct.$__constructAtributs."){".$endl.$tab.$__constructInitAt;
 
@@ -187,7 +246,7 @@
 		//************************************************************//
 		//						SEMANTICS FUNCTIONS 				  //
 		//************************************************************//
-		private function parseToConformSemantics($string){
+		private function parseToConformSemantics($string){//magic
 			$string = lcfirst($string);
 			$string = explode(" ", $string);
 			$categorieName = "";

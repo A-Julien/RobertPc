@@ -1,10 +1,10 @@
-<?php
-/*
-c'est un fammeux trois mats
-*/
+<?="<?php" ?>
+<?php 
+	include('main.php')
+?>
 	require_once('../modele/classes/generique.class.php');
 
-	class personnalCipm extends Generique {
+	class <?= $className?> extends Generique {
 			public $frequence;
 			public $unTribu;
 	public function __construct($id,$nom,$modele,$marque,$description,$photo,$disponibilite,$prix,$format,$frequence,$unTribu){
@@ -20,4 +20,5 @@ c'est un fammeux trois mats
 		return $this->unTribu;
 	}
 	}
-?>
+
+<?= "?>" ?>

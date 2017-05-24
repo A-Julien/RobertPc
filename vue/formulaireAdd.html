@@ -9,7 +9,7 @@
       <h1>Ajout d'un Produit :</h1>
     </header>
 
-    <form action="add.php" method="get">
+    <form action="../controleur/controleur.php" method="post">
       <fieldset id="categorie">
       <legend>Choisissez la catégorie du produit à ajouter :</legend>
         <select name="categorie">
@@ -21,6 +21,7 @@
         </select>
     </fieldset>
     <p>
+      <input type="hidden" name="action" value="add">
       <input type="submit" id="confirmation" value="Valider">
     </p>
     </form>
