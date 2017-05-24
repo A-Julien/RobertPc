@@ -30,7 +30,7 @@ require_once('../modele/classes/generique.class.php');
 
 		public function getListe($categorie)
 		{
-			$req ='select * from appartient A, produits P, categories C where P.id = A.id AND C.nom = A.nom AND C.nomMenu = \''.$categorie.'\'';
+			$req ='select * from appartient A, produits P, categories C where P.id = A.id AND C.nomMenu = A.nom AND C.nomMenu = \''.$categorie.'\'';
 			$res=$this->db->query($req);
 			$result=$res->fetchAll(PDO::FETCH_OBJ);
 			return $result;
@@ -82,7 +82,6 @@ require_once('../modele/classes/generique.class.php');
 			$req2 = 'insert into appartient values (\''.$categorieName.'\',\''.$id.'\')';
 
 			$res = $this->db->query($req);
-			var_dump($res);
 			$this->db->query($req2);
 
 		}
