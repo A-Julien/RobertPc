@@ -1,7 +1,3 @@
-html {
-	height: 100%;
-}
-
 /* Réglages généraux*/
 body {
 	margin: 0px;
@@ -9,6 +5,8 @@ body {
     font-size: 16px;
 	color: #4c4643;
 	min-height: 100vh;
+	margin: auto;
+	width: 100%;
 }
 
 /* Réglages du header, contenant nom du site et barre de recherche*/
@@ -30,6 +28,7 @@ header a:visited {
 header a:hover {
 	color: rgb(121,128,129);
 }
+
 #recherche{
 	float: right;
 	width: 40%;
@@ -49,6 +48,8 @@ header a:hover {
 	width: 10%;
 	height: 30px;
 }
+
+
 
 /* Réglages du footer contenant info, mentions et copyright */
 footer {
@@ -84,7 +85,6 @@ footer p {
 #listeCat
 {
 	margin: 1px;
-	width: 100%;
 }
 #listeCat p {
 	margin: 0px;
@@ -118,16 +118,4 @@ li {
 #whiteBox {
 	text-align: center;
 	min-height: 100vh;
-}
-
-#article {
-	width: 50%;
-	margin: auto;
-	border-right: 1px solid rgb(90,94,107);
-	border-bottom: 1px solid rgb(90,94,107);
-	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
-}
-
-#photo {
-	width: 80%;
 }

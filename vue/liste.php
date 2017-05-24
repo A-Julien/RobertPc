@@ -8,9 +8,8 @@
   <body>
     <header>
       <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
-      <form id="recherche" method="post">
-        <input name="saisie" type="text" placeholder="Mots-Clefs..." required />
-        <input class="loupe" type="submit" value="" />
+      <form id="recherche" action="/search" method="post">
+        <input id="barre" name="saisie" type="text" placeholder="Recherche par Mots-Clefs" required /><input id="loupe" type="submit" value="Go!" />
       </form>
     </header>
 
@@ -40,7 +39,11 @@
           global $tabListe;
           global $categorie;
           for ($i=0; $i < sizeof($tabListe) ; $i++) {
+<<<<<<< HEAD
             printf("<li class=\"article\"><form action=\"../controleur/controleur.php\" method=\"post\"><img src=\"../modele/images/".$tabListe[$i]->id.".png\" alt=\"Salut\" width=\"250\" height=\"200\" />");
+=======
+            printf("<li class=\"article\"><form action=\"../controleur/controleur.php\" method=\"post\"><img src=\"../modele/images/".$categorie."/".$tabListe[$i]->id.".png\" alt=\"Error\" width=\"250\" height=\"200\" class=\"img\"/>");
+>>>>>>> 6282ea7b84b119f68e48a95ee47c20ca57bfeb37
             printf("<input type=\"hidden\" name=\"action\" value=\"getObj\">");
             printf("<input type=\"hidden\" name=\"id\" value=".$tabListe[$i]->id.">");
             printf("<input type=\"hidden\" name=\"categorie\" value=".$categorie.">");

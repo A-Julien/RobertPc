@@ -16,7 +16,6 @@ header {
 	background-color: rgb(90,94,107);
 	padding: 1%;
 	color: rgb(158,158,158);
-	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
 }
 header h1, #recherche{
 	display: inline-block;
@@ -33,6 +32,22 @@ header a:hover {
 }
 #recherche{
 	float: right;
+	width: 40%;
+}
+#barre {
+	padding: 1px 0 1px 0;
+	width: 80%;
+	border: 6px solid white;
+	border-right: none;
+}
+#loupe {
+	font-style: italic;
+	font-weight: bold;
+	background-color: rgb(204,85,0);
+	color: white;
+	border: none;
+	width: 10%;
+	height: 30px;
 }
 
 /* Réglages du footer contenant info, mentions et copyright */
@@ -75,7 +90,7 @@ footer p {
 }
 .bouton {
 	padding: 6px 2px 6px 2px;
-	font-size: 13px;
+	font-size: 15px;
 	font-weight: bold;
 	background-color: rgb(90,94,107);
 	color: rgb(64, 165, 181);
@@ -90,14 +105,12 @@ li {
 	display: inline-block;
 	text-align: center;
 	width: 20%;
-	border: solid rgb(158,158,158) 1px;
 }
 
 #containerListeCat {
 	background-color: rgb(90,94,107);
-	margin-top: 4px;
 	text-align: center;
-	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
+	box-shadow: 2px 2px 2px 2px rgb(90,94,107);
 }
 
 /* Réglages du bloc central */
@@ -109,7 +122,7 @@ li {
 .article {
 	display: inline-block;
 	width: 30%;
-	margin: 1%;
+	margin: 2%;
 	border: solid rgb(158,158,158) 1px;
 	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
 }

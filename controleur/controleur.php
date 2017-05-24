@@ -9,9 +9,14 @@
 	$categorie;
 	$id;
 	$produit;
+<<<<<<< HEAD
+	$recherche;
+	$dataSearch;
+=======
 	$tabCreaCat;
 	$newCategorie;
 	$gen;
+>>>>>>> 65e9d011f54ef98c0de660ba3d7279c84ba8242f
 
 	if (isset($_POST['action'])) {
 		$action = $_POST['action'];
@@ -53,6 +58,17 @@
 		include("../vue/produit.php");
 	}
 
+<<<<<<< HEAD
+	function getSearch() {
+		global $recherche;
+		global $dataSearch;
+		global $robert;
+		$recherche = $_POST['saisie'];
+		$dataSearch = $robert->getSearchDAO($recherche);
+		include("../vue/recherche.php");
+	}
+?>
+=======
 	function ajouterCat() { //ouvre le formulaire permettant de déterminer les noms et types des attributs de la nouvelle catégorie
 		include("../vue/ajoutCat.php");
 	}
@@ -150,3 +166,4 @@
 	}
 
 ?>
+>>>>>>> 65e9d011f54ef98c0de660ba3d7279c84ba8242f
