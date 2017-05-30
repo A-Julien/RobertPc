@@ -12,6 +12,9 @@
 	$tabCreaCat;
 	$newCategorie;
 	$gen;
+	$search;
+	$tabListeSearch;
+	$dataSearch;
 
 	if (isset($_POST['action'])) {
 		$action = $_POST['action'];
@@ -40,6 +43,8 @@
 		include("../vue/liste.php");
 	}
 
+	
+
 	function getObj() { //ouvre la page web "produit"
 		global $categorie;
 		global $robert;
@@ -51,6 +56,15 @@
 		$id = $_POST['id'];
 		$produit = $robert->getObjet($id, $categorie);
 		include("../vue/produit.php");
+	}
+
+	//cette fonction retourne le résultat d'une recherche par mots clés
+	public function getSearch($search)
+	{
+		$req='SELECT * FROM produits P where nom LIKE \'%'.$search.'%\' AND modele LIKE \'%'.$search.'%\' AND marque LIKE \'%'.$search.'%\' AND description LIKE \'%'.$search.'%\'';
+		$res=$this->db->query($req);
+		$result=$res->fetchAll(PDO::FETCH_OBJ);
+		return $result;
 	}
 
 	function ajouterCat() { //ouvre le formulaire permettant de déterminer les noms et types des attributs de la nouvelle catégorie

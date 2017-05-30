@@ -38,6 +38,8 @@ require_once('../modele/classes/generique.class.php');
 			return $result;
 		}
 
+		
+
 		//retourne un tableau contenant les categories
 		public function getCategories(){
 			$req = "select nomMenu from categories";
@@ -66,6 +68,18 @@ require_once('../modele/classes/generique.class.php');
 		public function addCategorie($categorieName){
 			$req = 'INSERT into categories values (\''.$categorieName.'\')';
 			$this->db->query($req);
+		}
+
+		//ouvre la page de résultats de recherche
+		function getSearch() {
+			global $data;
+			global $robert;
+			global $search;
+			global $tabListeSearch;
+			$data=$robert->getCategories();
+			$search=$_POST['saisie'];
+			$tabListeSearch=$robert->getSearch($search);
+			include("../vue/recherche.php");
 		}
 
 		private function IdIncrementation(){

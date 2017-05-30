@@ -10,8 +10,9 @@
     <header>
 
     <a href="../controleur/controleur.php"><h1>Robert PC.net</h1></a>
-      <form id="recherche" method="post">
-        <input id="barre" name="saisie" type="text" placeholder="Mots-Clefs..." required />
+      <form id="recherche" action="/search" method="post">
+        <input type="hidden" name="action" value="getSearch">
+        <input id="barre" name="saisie" type="text" placeholder="Recherche par Mots-Clefs" required />
         <input id="loupe" type="submit" value="Go!" />
       </form>
     </header>

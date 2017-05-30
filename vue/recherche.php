@@ -39,11 +39,11 @@
     <div id="whiteBox">
     <ul>
     	<?php
-    		global $dataSearch;
-    		foreach ($dataSearch as $key => $value) { 
-    			printf("<li class=\"article\">
-    				<div id=\"titre\">".$dataSearch[$i]->marque." ".$dataSearch[$i]->nom." ".$dataSearch[$i]->modele."</div>");
-    		}
+    		global $tabListeSearch;
+    		for ($i=0; $i < sizeof($tabListeSearch); $i++) { 
+          printf("<li class=\"article\"><img src=\"../modele/images/".$tabListeSearch[$i]->id.".png\" alt=\"Error\" width=\"250\" height=\"200\" />");
+          printf("<div id=\"titre\">".$tabListeSearch[$i]->marque." ".$tabListeSearch[$i]->nom." ".$tabListeSearch[$i]->modele."</div>");
+        }
 		?>
 	</ul>
     </div>
