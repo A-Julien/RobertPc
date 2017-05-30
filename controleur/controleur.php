@@ -57,16 +57,26 @@
 		include("../vue/ajoutCat.php");
 	}
 
+	function supprimerCat() {
+		global $data;
+		global $robert;
+		$data = $robert->getCategories();
+		include("../vue/supprCat.php");
+	}
+
+	function choixSupprCat() {
+		global $categorie;
+		global $robert;
+		$categorie = $_POST['categorie'];
+		$robert->deleteCategorie($categorie);
+		include("../vue/supprCatConfirm.php");
+	}
+
 	function creerCat() {
-		global $tabCreaCat;
 		global $newCategorie;
+		global $robert;
 		$newCategorie = $_POST['cat'];
-		$tabCreaCat = array();
-		for ($i=1; isset($_POST['nomAttr'.$i]) ; $i++) {
-			if(isset($_POST['nomAttr'.$i])){
-				$tabCreaCat[$i] = $_POST['nomAttr'.$i];
-			}
-		}
+		$robert->addCategorie($newCategorie);
 		include("../vue/ajoutCatConfirm.php");
 	}
 

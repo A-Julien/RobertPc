@@ -10,9 +10,6 @@
           <label for="newCategorie">Nom de la catégorie à créer :</label>
           <input type="text" name="cat" id ="newCategorie" required>
           </br>
-          <input type="button" name="ajoutAttr" value="+" onclick="ajout()">
-          <p id="zoneAttr">
-          </p>
         </p>
         <p>
           <input type="hidden" name="action" value="creerCat">
