@@ -81,7 +81,10 @@
 	}
 
 	function choixProduit() { //ouvre le formulaire permettant de choisir le type de produit à ajouter
-		include("../vue/formulaireAdd.html");
+		global $data;
+		global $robert;
+		$data = $robert->getCategories();
+		include("../vue/formulaireAdd.php");
 	}
 
 	function admin() {

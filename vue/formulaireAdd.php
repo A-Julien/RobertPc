@@ -13,11 +13,12 @@
       <fieldset id="categorie">
       <legend>Choisissez la catégorie du produit à supprimer :</legend>
         <select name="categorie">
-          <option value="Carte Mere">Carte Mère</option>
-          <option value="Carte Graphique">Carte Graphique</option>
-          <option value="Alimentation">Alimentation</option>
-          <option value="Processeur">Processeur</option>
-          <option value="Memoire">Mémoire</option>
+          <?php
+            global $data;
+            foreach ($data as $key => $value) {
+              echo '<option value="'.$value['nomMenu'].'">'.$value['nomMenu'].'</option>';
+            }
+           ?>
         </select>
     </fieldset>
     <p>
