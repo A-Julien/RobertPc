@@ -58,6 +58,13 @@
 
     </div>
 
+    <div id="admin">
+      <form action="../controleur/controleur.php" method="post">
+        <input type="hidden" name="action" value="admin">
+        <input type="submit" value="Admin">
+      </form>
+    </div>
+
 
   </body>
 

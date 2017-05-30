@@ -74,6 +74,10 @@
 		include("../vue/formulaireAdd.html");
 	}
 
+	function admin() {
+		include ("../vue/modeAdmin.php");
+	}
+
 	function add() { //ouvre le formulaire "add.php" pour renseigner les valeurs des attributs du nouveau produit
 		global $categorie;
 		global $gen;
@@ -91,7 +95,7 @@
 		foreach ($gen as $attribute => $value) {
 			$gen->$attribute = $_POST[$attribute];
 		}
-
+/*
 		if(isset($_POST['nombreProcesseurs'])) {
 			$gen->nbProcesseur = $_POST['nombreProcesseurs'];
 			$gen->nbMemoire = $_POST['RAM'];
@@ -117,8 +121,8 @@
 		}
 
 		echo $categorie;
-
-		$robert->ajouterProduit(); //a completer
+*/
+		$robert->addProduct($gen,$categorie); //a completer
 
 		include("../vue/ajoutPdtConfirm.php");
 

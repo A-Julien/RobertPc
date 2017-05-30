@@ -76,14 +76,12 @@ require_once('../modele/classes/generique.class.php');
 			$disponibilite = $Product->getDisponibilite();
 			$prix = $Product->getPrix();
 			$format = $Product->getFormat();
-
+			
 			$req = 'insert into produits values (\''.$id.'\',\''.$nom.'\',\''.$modele.'\',\''.$marque.'\',\''.$description.'\',\''.$photo.'\',\''.$disponibilite.'\',\''.$prix.'\',\''.$format.'\')';
-			var_dump('insert into produits values (\''.$id.'\',\''.$nom.'\',\''.$modele.'\',\''.$marque.'\',\''.$description.'\',\''.$photo.'\',\''.$disponibilite.'\',\''.$prix.'\',\''.$format.'\')');
 			$req2 = 'insert into appartient values (\''.$categorieName.'\',\''.$id.'\')';
 
+			$res=$this->db->query($req2);
 			$res = $this->db->query($req);
-			$this->db->query($req2);
-
 		}
 
 		//************************************************************//
