@@ -31,6 +31,12 @@
           <input type="submit" value="Ajouter une catégorie de produit">
         </p>
       </form>
+      <form action="../controleur/controleur.php" method="post">
+        <p>
+          <input type="hidden" name="action" value="getCat">
+          <input type="submit" value="Retour à l'accueil">
+        </p>
+      </form>
     </p>
 
   </body>
