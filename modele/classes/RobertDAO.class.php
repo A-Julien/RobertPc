@@ -69,7 +69,7 @@ require_once('../modele/classes/generique.class.php');
 		private function IdIncrementation(){
 			$reqid = "SELECT MAX(id) AS id FROM produits";
 		 	$resid = $this->db->query($reqid);
-		 	$resutlt = $res->fetch(PDO::FETCH_ASSOC)["id"];
+		 	$resutlt = $resid->fetch(PDO::FETCH_ASSOC)["id"];
 			return (int)$resutlt+1;
 		}
 
