@@ -163,7 +163,7 @@
 		global $id;
 		$categorie = $_POST['categorie'];
 		$id = $_POST['id'];
-		$objASuppr = $robert -> deleteObject($id, $categorie); //a completer
+		$robert -> deleteProduct($id); //a completer
 	}
 
 ?>
