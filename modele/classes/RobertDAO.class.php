@@ -14,11 +14,13 @@ require_once('../modele/classes/generique.class.php');
 			}
 		}
 
-
-
 		public function deleteProduct($id){
-			$req = 'delete from produits P, appartient A where id = '.$id;
-			$this->db->query($req);
+			$req = 'delete from appartient where id = '.$id;
+			$req2 = 'delete from produits where id = '.$id;
+			$res = $this->db->query($req);
+			var_dump($res);
+			$res = $this->db->query($req2);
+			var_dump($res);
 		}
 
 		public function getObjet($id) {
@@ -85,7 +87,7 @@ require_once('../modele/classes/generique.class.php');
 			$disponibilite = $Product->getDisponibilite();
 			$prix = $Product->getPrix();
 			$format = $Product->getFormat();
-			
+
 			$req = 'insert into produits values (\''.$id.'\',\''.$nom.'\',\''.$modele.'\',\''.$marque.'\',\''.$description.'\',\''.$photo.'\',\''.$disponibilite.'\',\''.$prix.'\',\''.$format.'\')';
 			$req2 = 'insert into appartient values (\''.$categorieName.'\',\''.$id.'\')';
 
