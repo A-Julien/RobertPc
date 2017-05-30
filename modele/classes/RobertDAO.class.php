@@ -66,8 +66,17 @@ require_once('../modele/classes/generique.class.php');
 			$this->db->query($req);
 		}
 
+		private function IdIncrementation(){
+			$reqid = "SELECT MAX(id) AS id FROM produits";
+		 	$resid = $this->db->query($reqid);
+		 	$resutlt = $res->fetch(PDO::FETCH_ASSOC)["id"];
+			return (int)$resutlt+1;
+		}
+
 		public function addProduct($Product, $categorieName){
-			$id = $Product->getId();
+
+			//$id = $Product->getId();
+			$id = $this->IdIncrementation();
 			$nom = $Product->getNom();
 			$modele = $Product->getModele();
 			$marque = $Product->getMarque();
