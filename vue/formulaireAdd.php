@@ -11,7 +11,7 @@
 
     <form action="../controleur/controleur.php" method="post">
       <fieldset id="categorie">
-      <legend>Choisissez la catégorie du produit à supprimer :</legend>
+      <legend>Choisissez la catégorie du produit à ajouter :</legend>
         <select name="categorie">
           <?php
             global $data;
@@ -22,7 +22,7 @@
         </select>
     </fieldset>
     <p>
-      <input type="hidden" name="action" value="suppr">
+      <input type="hidden" name="action" value="ajouterProduit">
       <input type="submit" id="confirmation" value="Valider">
     </p>
     </form>
