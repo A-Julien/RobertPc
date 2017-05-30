@@ -15,6 +15,8 @@
 	$search;
 	$tabListeSearch;
 	$dataSearch;
+	$dispo;
+	$marque;
 
 	if (isset($_POST['action'])) {
 		$action = $_POST['action'];
@@ -58,14 +60,42 @@
 		include("../vue/produit.php");
 	}
 
-	//cette fonction retourne le résultat d'une recherche par mots clés
-	public function getSearch($search)
-	{
-		$req='SELECT * FROM produits P where nom LIKE \'%'.$search.'%\' AND modele LIKE \'%'.$search.'%\' AND marque LIKE \'%'.$search.'%\' AND description LIKE \'%'.$search.'%\'';
-		$res=$this->db->query($req);
-		$result=$res->fetchAll(PDO::FETCH_OBJ);
-		return $result;
+	//ouvre la page de résultats de recherche
+	function getSearch() {
+		global $data;
+		global $robert;
+		global $search;
+		global $tabListeSearch;
+		$data=$robert->getCategories();
+		$search=$_POST['saisie'];
+		$tabListeSearch=$robert->getSearch($search);
+		include("../vue/recherche.php");
 	}
+
+	//ouvre la page de formulaire 
+	/*function formSearch() {
+		global $data;
+		global $robert;
+		$data=$robert->getCategories();
+		include("../vue/formSearch.php");
+	}
+
+	function getSearchComplete() {
+		global $data;
+		global $robert;
+		global $search;
+		global $dispo;
+		global $marque;
+		global $tabListeSearch;
+		$data=$robert->getCategories();
+		$search=$_POST['nom'];
+		if (isset($_POST['dispo']) && ($_POST['dispo']=="true" || $_POST['dispo']=="false")) {$dispo=$_POST['dispo'];}
+		else{$dispo="undefined";}
+		if (isset($_POST['marque'])) {$dispo=$_POST['marque'];}
+		else{$marque="undefined";}
+		$tabListeSearch=$robert->getSearchComplete($search, $dispo, $marque);
+		include("../vue/rechercheAvance.php");
+	}*/
 
 	function ajouterCat() { //ouvre le formulaire permettant de déterminer les noms et types des attributs de la nouvelle catégorie
 		include("../vue/ajoutCat.php");

@@ -49,8 +49,6 @@ header a:hover {
 	height: 30px;
 }
 
-
-
 /* Réglages du footer contenant info, mentions et copyright */
 footer {
 	background-color: rgb(90,94,107);
@@ -118,4 +116,27 @@ li {
 #whiteBox {
 	text-align: center;
 	min-height: 100vh;
+}
+
+#article {
+	width: 30%;
+	margin: auto;
+	border-right: 1px solid rgb(90,94,107);
+	border-bottom: 1px solid rgb(90,94,107);
+	box-shadow: 1px 1px 2px 2px rgb(90,94,107);
+}
+
+#photo {
+	width: 80%;
+}
+.boutons {
+	border-radius: 12px 0 12px 0;
+	background-color: rgb(90,94,107);
+	border: solid rgb(64, 165, 181) 1px;
+	font-weight: bold;
+	padding: 6px 2px 6px 2px;
+
+}
+#titre {
+	margin: 5px;
 }

@@ -70,17 +70,39 @@ require_once('../modele/classes/generique.class.php');
 			$this->db->query($req);
 		}
 
-		//ouvre la page de résultats de recherche
-		function getSearch() {
-			global $data;
-			global $robert;
-			global $search;
-			global $tabListeSearch;
-			$data=$robert->getCategories();
-			$search=$_POST['saisie'];
-			$tabListeSearch=$robert->getSearch($search);
-			include("../vue/recherche.php");
+		//cette fonction retourne le résultat d'une recherche par mots clés
+		function getSearch($search)
+		{
+			$req='SELECT * FROM produits where nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\' OR marque LIKE \'%'.$search.'%\' OR description LIKE \'%'.$search.'%\'';
+			$res=$this->db->query($req);
+			$result=$res->fetchAll(PDO::FETCH_OBJ);
+			return $result;
 		}
+
+		/*function getSearchComplete($search, $dispo, $marque){
+			if ($dispo == "undefined" && $marque=="undefined") {
+				$req='SELECT * FROM produits where nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+			elseif ($dispo == "undefined") {
+				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$marque.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+			elseif ($marque == "undefined") {
+				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$dispo.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+			else{
+				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$marque.'%\' AND dispo LIKE \'%'.$dispo.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+
+			return $result;
+		}*/
 
 		private function IdIncrementation(){
 			$reqid = "SELECT MAX(id) AS id FROM produits";
