@@ -108,34 +108,7 @@
 		foreach ($gen as $attribute => $value) {
 			$gen->$attribute = $_POST[$attribute];
 		}
-/*
-		if(isset($_POST['nombreProcesseurs'])) {
-			$gen->nbProcesseur = $_POST['nombreProcesseurs'];
-			$gen->nbMemoire = $_POST['RAM'];
-		}
-		if(isset($_POST['frequence']) && isset($_POST['RAM'])) {
-			$gen->frequence = $_POST['frequence'];
-			$gen->nbMemoire = $_POST['RAM'];
-		}
-		if(isset($_POST['puissance'])) {
-			$gen->puissance = $_POST['puissance'];
-		}
-		if(isset($_POST['nombreCoeurs'])) {
-			$gen->frequence = $_POST['frequence'];
-			$gen->nbCoeur = $_POST['nombreCoeurs'];
-		}
-		if(isset($_POST['capacite'])) {
-			$gen->frequence = $_POST['frequence'];
-			$gen->capacite = $_POST['capacite'];
-		}
-
-		foreach ($gen as $key => $value) {
-			echo $key.":".$value."</br>";
-		}
-
-		echo $categorie;
-*/
-		$robert->addProduct($gen,$categorie); //a completer
+		$robert->addProduct($gen,$categorie);
 
 		include("../vue/ajoutPdtConfirm.php");
 
@@ -161,9 +134,12 @@
 		global $robert;
 		global $categorie;
 		global $id;
+		global $gen;
 		$categorie = $_POST['categorie'];
 		$id = $_POST['id'];
-		$robert -> deleteProduct($id); //a completer
+		$gen = $robert -> getObjet($id);
+		$robert -> deleteProduct($id);
+		include("../vue/supprPdtConfirm.php");
 	}
 
 ?>

@@ -22,7 +22,7 @@
         </select>
     </fieldset>
     <p>
-      <input type="hidden" name="action" value="ajouterProduit">
+      <input type="hidden" name="action" value="add">
       <input type="submit" id="confirmation" value="Valider">
     </p>
     </form>

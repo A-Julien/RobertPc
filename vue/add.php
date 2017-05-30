@@ -18,7 +18,7 @@
     <form action="../controleur/controleur.php" method="post">
       <fieldset>
       <?php
-        foreach ($gen as $attribute => $value) {
+        foreach ($gen as $attribute=>$value) {
           echo '<label for='.$attribute.'>'.$attribute.' :</label>';
           echo '<input type="text" name="'.$attribute.'" id ="'.$attribute.'" required>';
           echo '<br>';
