@@ -10,7 +10,7 @@
 ##Installation des pré-requis
 Mise à jour de la liste des paquets :
 
-```
+```bash
 sudo apt-get update	
 ```
 	
@@ -19,7 +19,7 @@ sudo apt-get update
 
 * 
 
-	```
+	```bash
 	sudo apt-get install apache2
 	```
 
@@ -27,13 +27,13 @@ sudo apt-get update
 
 * Php : 
 
-	```
+	```bash
 	sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
 	```
 
 * Sqlite pour php :
 
-	```
+	```bash
 	sudo apt-get install php5-sqlite
 	```
 
@@ -86,4 +86,3 @@ sudo apt-get update
 	```
 	sudo ./initRobertPc.sh
 	```
-	
