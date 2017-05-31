@@ -18,9 +18,7 @@ require_once('../modele/classes/generique.class.php');
 			$req = 'delete from appartient where id = '.$id;
 			$req2 = 'delete from produits where id = '.$id;
 			$res = $this->db->query($req);
-			var_dump($res);
 			$res = $this->db->query($req2);
-			var_dump($res);
 		}
 
 		public function getObjet($id) {
@@ -106,7 +104,6 @@ require_once('../modele/classes/generique.class.php');
 			}
 			$corpReq = substr($corpReq, 0, -1);
 			$req = $startReq.$categorieName." ".$corpReq.")";
-			var_dump($req);
 			$this->db->query($startReq.$categorieName.$corpReq.")");
 		}
 
@@ -349,6 +346,6 @@ require_once('../modele/classes/generique.class.php');
 		$req = $req.")";
 					$this->db->query($req);
 					*/
-	//}
+	}
 
 ?>
