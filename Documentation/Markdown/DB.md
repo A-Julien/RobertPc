@@ -1,4 +1,6 @@
 ##Modèle DB
+### MCD :
+![Rendering preferences pane](../../Merise/MCD.png) 
 
 ### Produits :
 	
@@ -20,6 +22,7 @@
 	- nom (String)
   	- id (String)
 
+***
 ##Ancien modèle DB:
 
 ### Générique :

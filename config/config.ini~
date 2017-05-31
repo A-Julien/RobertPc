@@ -1,8 +1,0 @@
-; Fichier de configuration RobertPc
-
-; Chemin absolu vers la base de donnée
-    database_path = '../modele/data/robertPc.db';
-    dao_path = '../modele/classes/RobertDAO.class.php';
-    controleur_path = '../controleur/controleur.php';
-
-

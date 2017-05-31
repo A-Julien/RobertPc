@@ -36,9 +36,7 @@ require_once('../modele/classes/generique.class.php');
 			$res=$this->db->query($req);
 			$result=$res->fetchAll(PDO::FETCH_OBJ);
 			return $result;
-		}
-
-		
+		}		
 
 		//retourne un tableau contenant les categories
 		public function getCategories(){
@@ -55,15 +53,6 @@ require_once('../modele/classes/generique.class.php');
 			$this->db->query($req1);
 			$this->db->query($req2);
 			$this->db->query($req3);
-			// $categorieName =  $this->parseToConformSemantics($categorieName);
-			// $req = 'DROP TABLE [ IF EXISTS ] '.$categorieName;
-			// $this->db->query($req);
-			// if(!is_dir($categorieName))
-			// 	unlink($categorieName.".class.php");
-			//
-			// if(!is_dir("../txt/".$categorieName))
-			// 	unlink("../txt/".$categorieName);
-			// $this->rmDir("../images/".$categorieName);
 		}
 		public function addCategorie($categorieName){
 			$req = 'INSERT into categories values (\''.$categorieName.'\')';
@@ -78,31 +67,6 @@ require_once('../modele/classes/generique.class.php');
 			$result=$res->fetchAll(PDO::FETCH_OBJ);
 			return $result;
 		}
-
-		/*function getSearchComplete($search, $dispo, $marque){
-			if ($dispo == "undefined" && $marque=="undefined") {
-				$req='SELECT * FROM produits where nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\'';
-				$res=$this->db->query($req);
-				$result=$res->fetchAll(PDO::FETCH_OBJ);
-			}
-			elseif ($dispo == "undefined") {
-				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$marque.'%\'';
-				$res=$this->db->query($req);
-				$result=$res->fetchAll(PDO::FETCH_OBJ);
-			}
-			elseif ($marque == "undefined") {
-				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$dispo.'%\'';
-				$res=$this->db->query($req);
-				$result=$res->fetchAll(PDO::FETCH_OBJ);
-			}
-			else{
-				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$marque.'%\' AND dispo LIKE \'%'.$dispo.'%\'';
-				$res=$this->db->query($req);
-				$result=$res->fetchAll(PDO::FETCH_OBJ);
-			}
-
-			return $result;
-		}*/
 
 		private function IdIncrementation(){
 			$reqid = "SELECT MAX(id) AS id FROM produits";
@@ -131,39 +95,7 @@ require_once('../modele/classes/generique.class.php');
 			$res = $this->db->query($req);
 		}
 
-		//************************************************************//
-		//						ADD CATEGORIES 						  //
-		//************************************************************//
-		// public function addCategorie($categorieName,$tabAttribut,$com){
-		// 	$categorieName = $this->parseToConformSemantics($categorieName);
-		// 	$categorieName = $this->removeAccents($categorieName);
-		// 	$classFile = fopen("../modele/classes/".$categorieName.".class.php", "w+");
-		// 	if($classFile==false)
-		// 		die("Can not creat file");
-		// 	fputs($classFile, $this->HowRobertGenerateClassCode($categorieName,$tabAttribut,$com));
-		// 	fclose($classFile);
-		// 	//********* Add Init File********//
-		// 	$initFile = fopen("../modele/txt/".$categorieName, "w+");
-		// 	if($initFile==false)
-		// 		die("Can not creat einit file");
-		// 	fclose($initFile);
-		//
-		// 	//********* Inculde generation********//
-		// 	$includeFile = fopen("../modele/classes/include.php", "r+");
-		// 	if($includeFile==false)
-		// 		die("Can not creat einit file");
-		// 	fseek($includeFile,-2,SEEK_END);
-		// 	fputs($includeFile, $this->addIncludeToDAO($categorieName));
-		// 	fclose($includeFile);
-		// 	//********* Image Folder********//
-		// 	if (!mkdir('../modele/images/'.$categorieName, 0777, true)) {
-	  //   		die('Echec lors de la création du répertoires...');
-		// 	}
-		// 	//********* Add Table ********//
-		// 	$this->creatTable($categorieName,$tabAttribut);
-		// 	return 0;
-		//
-		// }
+		
 
 		private function creatTable($categorieName,$tabAttribut){
 			$startReq = 'CREATE TABLE ';
@@ -185,7 +117,78 @@ require_once('../modele/classes/generique.class.php');
 			return $include;
 		}
 
-		/*private function HowRobertGenerateClassCode ($categorieName,$tabAttribut,$com){
+		
+
+		//************************************************************/
+								//GENERATION						  //
+		//***********************************************************//
+		/*public function addCategorie($categorieName,$tabAttribut,$com){
+			$categorieName = $this->parseToConformSemantics($categorieName);
+			$categorieName = $this->removeAccents($categorieName);
+			$classFile = fopen("../modele/classes/".$categorieName.".class.php", "w+");
+			if($classFile==false)
+				die("Can not creat file");
+			fputs($classFile, $this->HowRobertGenerateClassCode($categorieName,$tabAttribut,$com));
+			fclose($classFile);
+			//********* Add Init File
+			$initFile = fopen("../modele/txt/".$categorieName, "w+");
+			if($initFile==false)
+				die("Can not creat einit file");
+			fclose($initFile);
+		
+			//********* Inculde generation
+			$includeFile = fopen("../modele/classes/include.php", "r+");
+			if($includeFile==false)
+				die("Can not creat einit file");
+			fseek($includeFile,-2,SEEK_END);
+			fputs($includeFile, $this->addIncludeToDAO($categorieName));
+			fclose($includeFile);
+			//********* Image Folder
+			if (!mkdir('../modele/images/'.$categorieName, 0777, true)) {
+	    		die('Echec lors de la création du répertoires...');
+			}
+			//********* Add Table
+			$this->creatTable($categorieName,$tabAttribut);
+			return 0;
+		
+		}
+				// $categorieName =  $this->parseToConformSemantics($categorieName);
+			// $req = 'DROP TABLE [ IF EXISTS ] '.$categorieName;
+			// $this->db->query($req);
+			// if(!is_dir($categorieName))
+			// 	unlink($categorieName.".class.php");
+			//
+			// if(!is_dir("../txt/".$categorieName))
+			// 	unlink("../txt/".$categorieName);
+			// $this->rmDir("../images/".$categorieName);
+
+		function getSearchComplete($search, $dispo, $marque){
+			if ($dispo == "undefined" && $marque=="undefined") {
+				$req='SELECT * FROM produits where nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+			elseif ($dispo == "undefined") {
+				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$marque.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+			elseif ($marque == "undefined") {
+				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$dispo.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+			else{
+				$req='SELECT * FROM produits where (nom LIKE \'%'.$search.'%\' OR modele LIKE \'%'.$search.'%\') AND marque LIKE \'%'.$marque.'%\' AND dispo LIKE \'%'.$dispo.'%\'';
+				$res=$this->db->query($req);
+				$result=$res->fetchAll(PDO::FETCH_OBJ);
+			}
+
+			return $result;
+		}
+
+
+		private function HowRobertGenerateClassCode ($categorieName,$tabAttribut,$com){
             $categorieName = $this->parseToConformSemantics($categorieName);
             $endl = "\n";
 			$tab = "\t";
@@ -238,7 +241,7 @@ require_once('../modele/classes/generique.class.php');
 	     		reset($allDir);
 	    	 	rmdir($dir);
    			}
- 		}*/
+ 		}
 
 
 		private function parseToConformSemantics($string){//magic
