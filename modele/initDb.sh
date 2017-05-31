@@ -1,12 +1,12 @@
 #!/bin/sh
-rm data/robertPc.db
-sqlite3 data/robertPc.db <<EOF
-.read create.sql
+rm modele/data/robertPc.db
+sqlite3 modele/data/robertPc.db <<EOF
+.read modele/create.sql
 .separator |
-.import txt/produits produits
+.import modele/txt/produits produits
 .separator |
-.import txt/categories categories
+.import modele/txt/categories categories
 .separator |
-.import txt/appartient appartient
+.import modele/txt/appartient appartient
 .quit
 EOF
